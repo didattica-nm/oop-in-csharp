@@ -3,7 +3,7 @@
   <head>
 	<meta name="generator" content="Hugo 0.157.0">
     <meta charset="utf-8">
-<title>Guide for writing markdown slides</title>
+<title>O.O.P. in C#</title>
 <meta name="description" content="A Hugo theme for creating Reveal.js presentations">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel="stylesheet" href="./reveal-js/dist/reset.css">
 <link rel="stylesheet" href="./reveal-js/dist/reveal.css">
-  <link rel="stylesheet" href="./css/custom-theme.min.98c2613e88bb87181701d13a51ec2b1244bb571c134b1bf31c5f37abb494524d.css" id="theme"><link rel="stylesheet" href="./highlight-js/default.min.css">
+  <link rel="stylesheet" href="./css/custom-theme.min.6fc90a17070a44aec9995616ef35963e86d137f8fd9aeeeb55d31afe2b7c6bd4.css" id="theme"><link rel="stylesheet" href="./highlight-js/default.min.css">
 <link href="./extlib/css/bootstrap5.3.1.min.css" rel="stylesheet">
 <link href="./extlib/css/bootstrap-icons.min.css" rel="stylesheet">
   </head>
@@ -21,743 +21,305 @@
       <div class="slides">
   
 
-    <section><div style="max-width: fit-content; margin-inline: auto;" class="position-relative text-center accentify-top-left">
-<p>Today&rsquo;s date! <code>2026-10-07</code></p>
+    <section><h5 id="istituto-tecnico-tecnologico-blaise-pascal--cesena">Istituto Tecnico Tecnologico &ldquo;Blaise Pascal&rdquo; <strong>@</strong> Cesena</h5>
+<div style="max-width: fit-content; margin-inline: auto;" class="position-relative text-center accentify-top-right">
+<h1 id="object-oriented-programming--in-c"><strong>O</strong>bject <strong>O</strong>riented <strong>P</strong>rogramming <br> in C#</h1>
 </div>
-<h1 id="short-guide-to-markdown-slides">Short guide to Markdown slides</h1>
-<h3 id="this-has-much-potential">This has much potential</h3>
+<p><strong>.NET</strong> e la programmazione orientata agli <strong>oggetti</strong>.</p>
+<small>
+<p>A cura di Nicholas Magi — <code>nicholas.magi[at]ispascalcomandini.it</code></p>
+</small>
+<br>
 <small>
     <a href="?print-pdf&pdfSeparateFragments=false">
         <i class="bi bi-printer-fill"></i>
         Versione stampabile
     </a>
-</small> <small> — <strong>Author</strong>: Paperon De Paperoni</small>
+</small>
 </section><section>
 
 
 <section data-shortcode-section>
-<h1 id="typography">Typography</h1>
-<div style="max-width: fit-content; margin-inline: auto;" class="position-relative text-center accentify-bottom-right">
-    <p>Slide down!</p>
-</div>
-<p>$\downarrow$</p>
+<h4 id="parte-01">Parte <strong>#01</strong></h4>
+<h2 id="il-linguaggio-c-e-net">Il linguaggio <strong>C#</strong> e <strong>.NET</strong></h2>
 </section><section>
 <div class="container-fluid m-0 p-0">
-    <div class='row '><div class='col '><h1 id="headers">Headers</h1>
+    <div class='row '><div class='col '><p><img src="imgs/anders.png" alt=""></p>
+<small> 
+<p><strong>Anders Heijlsberg</strong>, Ingegnere software danese</p>
+</small>
 </div>
-<div class='col '><h1 id="h1">H1</h1>
-<h2 id="h2">H2</h2>
-<h3 id="h3">H3</h3>
-<h4 id="h4">H4</h4>
-<h5 id="h5">H5</h5>
-<h6 id="h6">H6</h6>
-</div>
-</div>
-</div>
-</section><section>
-<div class="container-fluid m-0 p-0">
-    <div class='row '><div class='col '><h1 id="text">Text</h1>
-</div>
-<div class='col '><p>normal text</p>
-<p><code>inline code</code></p>
-<p><em>italic</em></p>
-<p><strong>bold</strong></p>
-<p><strong><em>emphasized</em></strong></p>
-<p><em><strong>emphasized alternative</strong></em></p>
-<p><del>strikethrough</del></p>
-<p><a href="http://www.google.com">link to google</a></p>
-</div>
-</div>
-</div>
-</section><section>
-<div class="container-fluid m-0 p-0">
-    <div class='row '><div class='col '><h1 id="lists">Lists</h1>
-</div>
-<div class='col '><ol>
-<li>First ordered list item</li>
-<li>Another item
+<div class='col '><h3 id="il-linguaggio-c">Il linguaggio <strong>C#</strong></h3>
 <ul>
-<li>Unordered sub-list.</li>
-<li>with two items
+<li>Sviluppato da Anders Heijlsberg intorno al 2000 alla Microsoft.
 <ul>
-<li>another sublist
-<ol>
-<li>With a sub-enum</li>
-<li>yay!</li>
-</ol>
+<li>progettista anche del linguaggio <strong>TypeScript</strong>.</li>
+</ul>
 </li>
+<li>Parte dell&rsquo;iniziativa <em>.NET Framework</em>, poi diventata <em>.NET Core</em>, ora <strong>.NET</strong>.</li>
+<li>Sviluppato con la filosofia iniziale di Java, &ldquo;<em>write once, run anywhere</em>&rdquo;
+<ul>
+<li>poi i due linguaggi hanno preso pieghe diverse</li>
+</ul>
+</li>
+<li>Ultima versione: <strong>C# 15</strong> (al <em>7 ottobre 2026</em>)</li>
+</ul>
+</div>
+</div>
+</div>
+</section><section>
+<h3 id="java-e-la-jvm-java-virtual-machine"><strong>Java</strong> e la <strong>JVM</strong> (<strong>J</strong>ava <strong>V</strong>irtual <strong>M</strong>achine)</h3>
+<div class="container-fluid m-0 p-0">
+    <div class='row '><div class='col '><p><img src="imgs/jvm.png" alt=""></p>
+</div>
+<div class='col '><blockquote>
+<p>Write once, run anywhere.</p>
+</blockquote>
+<br>
+<p>Architettura della JVM</p>
+<p>Codice Java (<em>viene compilato in</em>)$\rightarrow$ Bytecode (<em>viene eseguito da</em>)$\rightarrow$ JVM</p>
+</div>
+</div>
+</div>
+</section><section>
+<h3 id="net-e-il-clr-common-language-runtime"><strong>.NET</strong> e il <strong>CLR</strong> (<strong>C</strong>ommon <strong>L</strong>anguage <strong>R</strong>untime)</h3>
+<p>Stessa filosofia, per più linguaggi.</p>
+<p><img src="imgs/clr.png" alt=""></p>
+<p>Architettura del CLR</p>
+<p>Codice C# (<em>viene compilato in</em>)$\rightarrow$ CIL (<em>viene eseguito da</em>)$\rightarrow$ CLR</p>
+</section><section>
+<h3 id="il-versionamento-di-net">Il versionamento di <strong>.NET</strong></h3>
+<div class="container-fluid m-0 p-0">
+    <div class='row '><div class='col '><h4 id="prima-di-net-5"><strong>Prima</strong> di .NET <strong>5</strong></h4>
+<ul>
+<li><strong>.NET Framework</strong>
+<ul>
+<li>specifico per Windows, sviluppo di applicazioni desktop (WinForm e WPF) e web.</li>
+</ul>
+</li>
+<li><strong>.NET Core</strong>
+<ul>
+<li>multi-platform (Win, Mac, Linux), <em>meno funzionalità di .NET Framework</em>, sviluppo web e desktop app</li>
+</ul>
+</li>
+<li><strong>Xamarin</strong>
+<ul>
+<li>mobile-oriented (Andrioid, iOS, Mac OS)</li>
 </ul>
 </li>
 </ul>
-</li>
-<li>Actual numbers don&rsquo;t matter, just that it&rsquo;s a number</li>
-<li>Ordered sub-list</li>
-<li>And another item.</li>
-</ol>
 </div>
-</div>
-</div>
-
-</section>
-</section><section>
-
-
-<section data-shortcode-section>
-<div style="max-width: fit-content; margin-inline: auto;" class="position-relative text-center accentify-top-right">
-    <h1 id="ui-blocks">UI Blocks</h1>
-</div>
-<p>Slide down!</p>
-<p>$\downarrow$</p>
-</section><section>
-<div class="container-fluid m-0 p-0">
-    <div class='row '><div class='col '><h1 id="callouts">Callouts</h1>
-<div class="callout cite">
-    <div class="callout-background py-4 px-5"><div class="callout-title text-start">A wise man once said</div><div class="callout-content"><p>skrr skrr blea blea</p>
-</div><div class="callout-footer d-flex justify-content-end my-3 fs-1"><small>Confucio, &#39;&#39;lettere d&#39;amore&#39;&#39;</small></div></div>
-</div>
-<div class="callout cite">
-    <div class="callout-background py-4 px-5"><div class="callout-title text-start">A wise man once said</div><div class="callout-content"><p>skrr skrr blea blea</p>
-</div><div class="callout-footer d-flex justify-content-end my-3 fs-1"><small><a href="https://www.google.com" target="_blank"><i class="fa-solid fa-link pe-2"></i>Confucio, &#39;&#39;lettere d&#39;amore&#39;&#39; (con link)</a></small></div></div>
-</div>
-</div>
-<div class='col '><div class="callout tip">
-    <div class="callout-background py-4 px-5"><div class="callout-title text-start">Tip</div><div class="callout-content"><p>this must be a great tip</p>
-</div></div>
-</div>
-<div class="callout note">
-    <div class="callout-background py-4 px-5"><div class="callout-title text-start">Note</div><div class="callout-content"><p>this is an information, or a note</p>
-</div></div>
-</div>
+<div class='col '><h4 id="dopo-net-5"><strong>Dopo</strong> .NET <strong>5</strong></h4>
 <div class="callout success">
-    <div class="callout-background py-4 px-5"><div class="callout-title text-start">Success</div><div class="callout-content"><p>Yay!</p>
-</div></div>
-</div>
-<div class="callout danger">
-    <div class="callout-background py-4 px-5"><div class="callout-title text-start">Danger!</div><div class="callout-content"><p>something went possibly wrong :/</p>
-</div></div>
-</div>
-<div class="callout warning">
-    <div class="callout-background py-4 px-5"><div class="callout-title text-start">Warning!</div><div class="callout-content"><p>just a warning</p>
+    <div class="callout-background py-4 px-5"><div class="callout-content"><p>Le implementazioni sono allineate e unificate a <strong>.NET</strong>.</p>
 </div></div>
 </div>
 </div>
 </div>
 </div>
 </section><section>
-<h1 id="code-blocks">Code Blocks</h1>
-<p>pt#01</p>
-<h2 id="inline">inline</h2>
-<p>You can play around with this <code>code</code> or <code>pwd</code></p>
-</section><section>
+<h3 id="caratteristiche-di-c">Caratteristiche di C#</h3>
 <div class="container-fluid m-0 p-0">
-    <div class='row '><h1 id="code-blocks">Code Blocks</h1>
-<p>pt#02</p>
-<h2 id="inside-code-blocks">inside code blocks</h2>
-<div class='col '><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;display:grid;"><code class="nohighlight" data-noescape><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff6ac1">import</span> System;
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#ff5c57">class</span> <span style="color:#f3f99d">Program</span> {
-</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>  <span style="color:#ff5c57">public</span> <span style="color:#ff5c57">static</span> <span style="color:#9aedfe">void</span> <span style="color:#57c7ff">main</span>(string<span style="color:#ff6ac1">[]</span> args) {
-</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>    System.<span style="color:#57c7ff">out</span>.<span style="color:#57c7ff">println</span>(<span style="color:#5af78e">&#34;Hello, World!&#34;</span>);
-</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>  }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>}
-</span></span></code></pre></div></div>
-<div class='col '><div class="callout note">
-    <div class="callout-background py-4 px-5"><div class="callout-content"><p>You can even highlight some lines of code!</p>
+    <div class='row '><div class='col '><div class="callout note">
+    <div class="callout-background py-4 px-5"><div class="callout-content"><h4 id="la-ricetta">La ricetta</h4>
+<ul>
+<li><strong>C-like</strong> per la parte di programmazione strutturata e imperativa</li>
+<li><strong>Java-like</strong> per la parte orientata agli oggetti</li>
+<li><strong>Object-orientation</strong> - garbage collector, oggetti per riferimento&hellip;</li>
+<li><strong>Functional-orientation</strong> - generics, funzioni lambda, delegati&hellip;</li>
+</ul>
+</div></div>
+</div>
+</div>
+<div class='col '><div class="callout success">
+    <div class="callout-background py-4 px-5"><div class="callout-content"><h4 id="la-filosofia">La filosofia</h4>
+<ul>
+<li><strong>Espressività</strong> e <strong>ricchezza di sintassi</strong> - col tempo è diventato un linguaggio con una <strong>grande grammatica</strong>.</li>
+</ul>
+</div></div>
+</div>
+<p>$\downarrow$</p>
+<div class="callout danger">
+    <div class="callout-background py-4 px-5"><div class="callout-content"><p>Attenzione alla <strong>syntactic sugar</strong>!</p>
 </div></div>
 </div>
 </div>
 </div>
 </div>
 </section><section>
-<div class="custom-code-wrapper"></div>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1</span><span><span style="color:#78787e">#include</span> <span style="color:#78787e">&#34;kernel/AsyncFSM.hpp&#34;</span><span style="color:#78787e">
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  2</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  3</span><span><span style="color:#78787e">// #define DEBUG
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  4</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  5</span><span>AsyncFSM<span style="color:#ff6ac1">::</span>AsyncFSM(Lcd <span style="color:#ff6ac1">*</span>lcd, Pot <span style="color:#ff6ac1">*</span>pot, Valve <span style="color:#ff6ac1">*</span>valve)
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  6</span><span>    <span style="color:#ff6ac1">:</span> state(<span style="color:#ff6ac1">new</span> StateHolder<span style="color:#ff6ac1">&lt;</span>SystemState<span style="color:#ff6ac1">&gt;</span>(UNCONNECTED)),
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  7</span><span>    lcd(lcd),
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  8</span><span>    potentiometer(pot),
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  9</span><span>    valve(valve)
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 10</span><span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 11</span><span>    displayState();
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 12</span><span>}
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 13</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 14</span><span><span style="color:#78787e">// Pay attention! 
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 15</span><span><span style="color:#78787e">// It uses Serial, so be sure not to need it to send messages to other systems! 
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 16</span><span><span style="color:#9aedfe">void</span> <span style="color:#57c7ff">log</span>(String msg) { Serial.println(msg); }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 17</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 18</span><span><span style="color:#9aedfe">void</span> AsyncFSM<span style="color:#ff6ac1">::</span>handleSerialEvt(SerialEvent <span style="color:#ff6ac1">*</span>serialEvt)
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 19</span><span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 20</span><span>    Msg <span style="color:#ff6ac1">*</span>receivedMsg <span style="color:#ff6ac1">=</span> serialEvt<span style="color:#ff6ac1">-&gt;</span>getValue();
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 21</span><span>    MsgTopic msgTopic <span style="color:#ff6ac1">=</span> receivedMsg<span style="color:#ff6ac1">-&gt;</span>getTopic();
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 22</span><span>    <span style="color:#ff6ac1">switch</span> (msgTopic)
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 23</span><span>    {
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 24</span><span>    <span style="color:#ff6ac1">case</span> MsgTopic<span style="color:#ff6ac1">::</span><span style="color:#ff5c57">MODE</span>: 
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 25</span><span>    {
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 26</span><span>        <span style="color:#78787e">// new mode received from CUS,
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 27</span><span>        <span style="color:#78787e">// decoding which mode was received
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 28</span><span>        <span style="color:#ff6ac1">if</span> (receivedMsg<span style="color:#ff6ac1">-&gt;</span>getContent().equals(<span style="color:#5af78e">&#34;MANUAL&#34;</span>))
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 29</span><span>        {
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 30</span><span>            <span style="color:#ff6ac1">this</span><span style="color:#ff6ac1">-&gt;</span>state<span style="color:#ff6ac1">-&gt;</span>setState(SystemState<span style="color:#ff6ac1">::</span>MANUAL);
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 31</span><span>            <span style="color:#78787e">// nothing else to do
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 32</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 33</span><span>        } <span style="color:#ff6ac1">else</span> <span style="color:#57c7ff">if</span> (receivedMsg<span style="color:#ff6ac1">-&gt;</span>getContent().equals(<span style="color:#5af78e">&#34;UNCONNECTED&#34;</span>))
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 34</span><span>        {
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 35</span><span>            <span style="color:#ff6ac1">this</span><span style="color:#ff6ac1">-&gt;</span>state<span style="color:#ff6ac1">-&gt;</span>setState(SystemState<span style="color:#ff6ac1">::</span>UNCONNECTED);
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 36</span><span>            <span style="color:#78787e">// nothing else to do   
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 37</span><span>        } 
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 38</span><span>        <span style="color:#ff6ac1">else</span> <span style="color:#57c7ff">if</span> (receivedMsg<span style="color:#ff6ac1">-&gt;</span>getContent().equals(<span style="color:#5af78e">&#34;AUTOMATIC&#34;</span>))
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 39</span><span>        {
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 40</span><span>            <span style="color:#78787e">// AUTOMATIC mode received
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 41</span><span>            <span style="color:#ff6ac1">this</span><span style="color:#ff6ac1">-&gt;</span>state<span style="color:#ff6ac1">-&gt;</span>setState(SystemState<span style="color:#ff6ac1">::</span>AUTOMATIC);
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 42</span><span>        } 
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 43</span><span>        <span style="color:#ff6ac1">else</span> 
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 44</span><span>        {
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 45</span><span>            <span style="color:#78787e">#ifdef DEBUG
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 46</span><span>            log(<span style="color:#5af78e">&#34;unexpected mode received!&#34;</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 47</span><span>            <span style="color:#78787e">#endif
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 48</span><span>        }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 49</span><span>        displayState();
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 50</span><span>        <span style="color:#ff6ac1">break</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 51</span><span>    }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 52</span><span>    <span style="color:#ff6ac1">case</span> MsgTopic<span style="color:#ff6ac1">::</span><span style="color:#ff5c57">VALVE</span>: 
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 53</span><span>    {
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 54</span><span>        <span style="color:#78787e">// we received something about the valve
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 55</span><span>        <span style="color:#78787e">// assuming the opening value arrives already in percentage between [0.0, 1.0]
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 56</span><span>        <span style="color:#ff6ac1">this</span><span style="color:#ff6ac1">-&gt;</span>valve<span style="color:#ff6ac1">-&gt;</span>setOpening(receivedMsg<span style="color:#ff6ac1">-&gt;</span>getContent().toFloat());
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 57</span><span>        <span style="color:#ff6ac1">break</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 58</span><span>    }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 59</span><span>    <span style="color:#ff6ac1">default</span><span style="color:#ff6ac1">:</span> 
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 60</span><span>    {
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 61</span><span>        <span style="color:#78787e">#ifdef DEBUG
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 62</span><span>        log(<span style="color:#5af78e">&#34;Unexpected msg topic received!&#34;</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 63</span><span>        <span style="color:#78787e">#endif
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 64</span><span>        <span style="color:#ff6ac1">break</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 65</span><span>    }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 66</span><span>    }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 67</span><span>}
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 68</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 69</span><span><span style="color:#9aedfe">void</span> AsyncFSM<span style="color:#ff6ac1">::</span>handleButtonEvt(ButtonEvent <span style="color:#ff6ac1">*</span>buttonEvt)
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 70</span><span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 71</span><span>    SystemState currentSystemState <span style="color:#ff6ac1">=</span> <span style="color:#ff6ac1">this</span><span style="color:#ff6ac1">-&gt;</span>state<span style="color:#ff6ac1">-&gt;</span>getState();
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 72</span><span>    SystemState newState <span style="color:#ff6ac1">=</span> currentSystemState;
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 73</span><span>    <span style="color:#ff6ac1">switch</span> (currentSystemState)
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 74</span><span>    {
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 75</span><span>        <span style="color:#ff6ac1">case</span> SystemState<span style="color:#ff6ac1">::</span><span style="color:#ff5c57">UNCONNECTED</span>:
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 76</span><span>        {
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 77</span><span>            <span style="color:#78787e">/* do nothing */</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 78</span><span>            <span style="color:#ff6ac1">break</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 79</span><span>        }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 80</span><span>        <span style="color:#ff6ac1">case</span> SystemState<span style="color:#ff6ac1">::</span><span style="color:#ff5c57">AUTOMATIC</span>:
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 81</span><span>        {
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 82</span><span>            newState <span style="color:#ff6ac1">=</span> SystemState<span style="color:#ff6ac1">::</span>MANUAL;
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 83</span><span>            <span style="color:#ff6ac1">break</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 84</span><span>        }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 85</span><span>        <span style="color:#ff6ac1">case</span> SystemState<span style="color:#ff6ac1">::</span><span style="color:#ff5c57">MANUAL</span>:
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 86</span><span>        {
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 87</span><span>            newState <span style="color:#ff6ac1">=</span> SystemState<span style="color:#ff6ac1">::</span>AUTOMATIC;
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 88</span><span>            <span style="color:#ff6ac1">break</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 89</span><span>        }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 90</span><span>    }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 91</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 92</span><span>    <span style="color:#ff6ac1">this</span><span style="color:#ff6ac1">-&gt;</span>state<span style="color:#ff6ac1">-&gt;</span>setState(newState);
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 93</span><span>    String newStateStr <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;UNCONNECTED&#34;</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 94</span><span>    <span style="color:#ff6ac1">if</span> (newState <span style="color:#ff6ac1">==</span> SystemState<span style="color:#ff6ac1">::</span>AUTOMATIC) { newStateStr <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;AUTOMATIC&#34;</span>; }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 95</span><span>    <span style="color:#ff6ac1">else</span> <span style="color:#57c7ff">if</span> (newState <span style="color:#ff6ac1">==</span> SystemState<span style="color:#ff6ac1">::</span>MANUAL) { newStateStr <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;MANUAL&#34;</span>; }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 96</span><span>    msgService.sendMsg(<span style="color:#5af78e">&#34;MODE:&#34;</span> <span style="color:#ff6ac1">+</span> newStateStr);
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 97</span><span>    displayState();
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 98</span><span>}
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 99</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">100</span><span><span style="color:#9aedfe">void</span> AsyncFSM<span style="color:#ff6ac1">::</span>handlePotEvt(PotEvent <span style="color:#ff6ac1">*</span>potEvt)
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">101</span><span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">102</span><span>    SystemState currentSystemState <span style="color:#ff6ac1">=</span> <span style="color:#ff6ac1">this</span><span style="color:#ff6ac1">-&gt;</span>state<span style="color:#ff6ac1">-&gt;</span>getState();
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">103</span><span>    <span style="color:#ff6ac1">if</span> (currentSystemState <span style="color:#ff6ac1">!=</span> SystemState<span style="color:#ff6ac1">::</span>MANUAL) { <span style="color:#ff6ac1">return</span>; }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">104</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">105</span><span>    <span style="color:#9aedfe">float</span> percentage <span style="color:#ff6ac1">=</span> (<span style="color:#9aedfe">float</span>)(potEvt<span style="color:#ff6ac1">-&gt;</span>getValue() <span style="color:#ff6ac1">-</span> POT_MIN) <span style="color:#ff6ac1">/</span> (POT_MAX <span style="color:#ff6ac1">-</span> POT_MIN);
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">106</span><span>    valve<span style="color:#ff6ac1">-&gt;</span>setOpening(percentage);
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">107</span><span>    msgService.sendMsg(<span style="color:#5af78e">&#34;VALVE:&#34;</span> <span style="color:#ff6ac1">+</span> String(percentage));
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">108</span><span>}
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">109</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">110</span><span><span style="color:#9aedfe">void</span> AsyncFSM<span style="color:#ff6ac1">::</span>checkAndProcessEvent()
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">111</span><span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">112</span><span>    noInterrupts();
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">113</span><span>    <span style="color:#9aedfe">bool</span> isEmpty <span style="color:#ff6ac1">=</span> sharedQueue.isEmpty();
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">114</span><span>    interrupts();
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">115</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">116</span><span>    <span style="color:#78787e">// Exit early if no events occurred
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">117</span><span>    <span style="color:#ff6ac1">if</span> (isEmpty) { <span style="color:#ff6ac1">return</span>; }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">118</span><span>    
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">119</span><span>    noInterrupts();
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">120</span><span>    IEvent <span style="color:#ff6ac1">*</span>evt <span style="color:#ff6ac1">=</span> sharedQueue.dequeue();
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">121</span><span>    interrupts();
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">122</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">123</span><span>    <span style="color:#ff6ac1">switch</span> (evt<span style="color:#ff6ac1">-&gt;</span>getType())
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">124</span><span>    {
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">125</span><span>    <span style="color:#ff6ac1">case</span> EventType<span style="color:#ff6ac1">::</span><span style="color:#ff5c57">SERIAL_EVT</span>: 
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">126</span><span>    {
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">127</span><span>        SerialEvent <span style="color:#ff6ac1">*</span>serialEvt <span style="color:#ff6ac1">=</span> <span style="color:#ff6ac1">static_cast</span><span style="color:#ff6ac1">&lt;</span>SerialEvent <span style="color:#ff6ac1">*&gt;</span>(evt);
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">128</span><span>        <span style="color:#78787e">#ifdef DEBUG
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">129</span><span>        log(<span style="color:#5af78e">&#34;serial event!&#34;</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">130</span><span>        <span style="color:#78787e">#endif
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">131</span><span>        handleSerialEvt(serialEvt);
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">132</span><span>        <span style="color:#ff6ac1">delete</span> serialEvt;
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">133</span><span>        <span style="color:#ff6ac1">break</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">134</span><span>    }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">135</span><span>    <span style="color:#ff6ac1">case</span> EventType<span style="color:#ff6ac1">::</span><span style="color:#ff5c57">BUTTON_EVT</span>:
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">136</span><span>    {
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">137</span><span>        ButtonEvent <span style="color:#ff6ac1">*</span>buttonEvt <span style="color:#ff6ac1">=</span> <span style="color:#ff6ac1">static_cast</span><span style="color:#ff6ac1">&lt;</span>ButtonEvent <span style="color:#ff6ac1">*&gt;</span>(evt);
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">138</span><span>        <span style="color:#78787e">#ifdef DEBUG
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">139</span><span>        log(<span style="color:#5af78e">&#34;button event!&#34;</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">140</span><span>        <span style="color:#78787e">#endif
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">141</span><span>        handleButtonEvt(buttonEvt);
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">142</span><span>        <span style="color:#ff6ac1">delete</span> buttonEvt;
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">143</span><span>        <span style="color:#ff6ac1">break</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">144</span><span>    }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">145</span><span>    <span style="color:#ff6ac1">case</span> EventType<span style="color:#ff6ac1">::</span><span style="color:#ff5c57">POT_EVT</span>: 
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">146</span><span>    {
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">147</span><span>        PotEvent <span style="color:#ff6ac1">*</span>potEvt <span style="color:#ff6ac1">=</span> <span style="color:#ff6ac1">static_cast</span><span style="color:#ff6ac1">&lt;</span>PotEvent <span style="color:#ff6ac1">*&gt;</span>(evt);
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">148</span><span>        <span style="color:#78787e">#ifdef DEBUG
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">149</span><span>        log(<span style="color:#5af78e">&#34;pot event!&#34;</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">150</span><span>        <span style="color:#78787e">#endif
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">151</span><span>        handlePotEvt(potEvt);
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">152</span><span>        <span style="color:#ff6ac1">delete</span> potEvt;
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">153</span><span>        <span style="color:#ff6ac1">break</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">154</span><span>    }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">155</span><span>    <span style="color:#ff6ac1">default</span><span style="color:#ff6ac1">:</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">156</span><span>        <span style="color:#78787e">#ifdef DEBUG
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">157</span><span>        log(<span style="color:#5af78e">&#34;unexpected event received!&#34;</span>);
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">158</span><span>        <span style="color:#78787e">#endif
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">159</span><span>        <span style="color:#ff6ac1">break</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">160</span><span>    }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">161</span><span>}
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">162</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">163</span><span><span style="color:#9aedfe">void</span> AsyncFSM<span style="color:#ff6ac1">::</span>displayState()
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">164</span><span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">165</span><span>    String msg <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;UNCONNECTED&#34;</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">166</span><span>    <span style="color:#ff6ac1">switch</span> (state<span style="color:#ff6ac1">-&gt;</span>getState())
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">167</span><span>    {
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">168</span><span>        <span style="color:#ff6ac1">case</span> SystemState<span style="color:#ff6ac1">::</span><span style="color:#ff5c57">AUTOMATIC</span>: { msg <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;AUTOMATIC&#34;</span>; <span style="color:#ff6ac1">break</span>; }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">169</span><span>        <span style="color:#ff6ac1">case</span> SystemState<span style="color:#ff6ac1">::</span><span style="color:#ff5c57">MANUAL</span>: { msg <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;MANUAL&#34;</span>; <span style="color:#ff6ac1">break</span>; }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">170</span><span>        <span style="color:#ff6ac1">default</span><span style="color:#ff6ac1">:</span> <span style="color:#ff6ac1">break</span>;
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">171</span><span>    }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">172</span><span>    lcd<span style="color:#ff6ac1">-&gt;</span>print(msg);
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">173</span><span>    <span style="color:#78787e">#ifdef DEBUG
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">174</span><span>    log(msg);
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">175</span><span>    <span style="color:#78787e">#endif
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">176</span><span>}
-</span></span></code></pre></div><h2 id="from-file">from file</h2>
+<h3 id="tipi-di-dato-semplici-value-types-e-reference-types">Tipi di dato semplici: <strong>value types</strong> e <strong>reference types</strong></h3>
+<p><img src="imgs/csharp-types.png" alt=""></p>
+<small>
+(la mappa non è esaustiva!)
+</small>
+</section><section>
+<h3 id="tipi-di-dato-built-in">Tipi di dato <strong>built-in</strong></h3>
+<p><img src="imgs/csharp-builtin.png" alt=""></p>
+<p><small>Da <a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/built-in-types">https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/built-in-types</a></small></p>
+</section><section>
+<h3 id="sviluppo-con-net----soluzione-vs-progetto">Sviluppo con .NET - <br> <strong>soluzione vs. progetto</strong></h3>
+<div class="container-fluid m-0 p-0">
+    <div class='row '><div class='col '><div class="callout note">
+    <div class="callout-background py-4 px-5"><div class="callout-content"><h4 id="soluzione">SOLUZIONE</h4>
+<ul>
+<li><strong>Raccoglitore</strong> di progetti</li>
+<li>Gestisce le dipendenze dei vari progetti e le loro varie configurazioni</li>
+<li>Estensione <code>.sln</code></li>
+</ul>
+</div></div>
+</div>
+</div>
+<div class='col '><div class="callout note">
+    <div class="callout-background py-4 px-5"><div class="callout-content"><h4 id="progetto">PROGETTO</h4>
+<ul>
+<li><strong>Componente</strong> di un&rsquo;applicazione</li>
+<li>Memorizza informazioni come
+<ul>
+<li>versione di .NET utilizzata</li>
+<li>elenco delle dipendenze e dei pacchetti utilizzati</li>
+<li>impostazioni di compilazione</li>
+<li>tipo di output della compilazione (<em>eseguibile, libreria, ecc&hellip;</em>)</li>
+</ul>
+</li>
+<li>Estensione <code>.csproj</code></li>
+</ul>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</section><section>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;Project</span> <span style="color:#57c7ff">Sdk=</span><span style="color:#5af78e">&#34;Microsoft.NET.Sdk&#34;</span><span style="color:#ff6ac1">&gt;</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&lt;PropertyGroup&gt;</span>    
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">&lt;TargetFramework&gt;</span>net7.0<span style="color:#ff6ac1">&lt;/TargetFramework&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">&lt;OutputType&gt;</span>Library<span style="color:#ff6ac1">&lt;/OutputType&gt;</span>    
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">&lt;Nullable&gt;</span>enable<span style="color:#ff6ac1">&lt;/Nullable&gt;</span>    
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">&lt;ImplicitUsings&gt;</span>enable<span style="color:#ff6ac1">&lt;/ImplicitUsings&gt;</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&lt;/PropertyGroup&gt;</span>  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&lt;ItemGroup&gt;</span>    
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">&lt;PackageReference</span> <span style="color:#57c7ff">Include=</span><span style="color:#5af78e">&#34;Newtonsoft.Json&#34;</span> <span style="color:#57c7ff">Version=</span><span style="color:#5af78e">&#34;13.0.3&#34;</span> <span style="color:#ff6ac1">/&gt;</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&lt;/ItemGroup&gt;</span>  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&lt;ItemGroup&gt;</span>    
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">&lt;ProjectReference</span> <span style="color:#57c7ff">Include=</span><span style="color:#5af78e">&#34;..\MyProject.Core\MyProject.Core.csproj&#34;</span> <span style="color:#ff6ac1">/&gt;</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&lt;/ItemGroup&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;/Project&gt;</span>
+</span></span></code></pre></div><p>Esempio del contenuto di un <strong>file progetto</strong> (<code>.csproj</code>)</p>
+</section><section>
+<h3 id="organizzazione-dei-file-di-unapplicazione">Organizzazione dei file di un&rsquo;applicazione</h3>
+<div class="container-fluid m-0 p-0">
+    <div class='row '><div class='col '><p><img src="imgs/fileorg.png" alt=""></p>
+<p><small>Esempio su GitHub: <a href="https://github.com/dotnet/samples/tree/main/framework/libraries/migrate-library-csproj">https://github.com/dotnet/samples/tree/main/framework/libraries/migrate-library-csproj</a></small></p>
+</div>
+<div class='col '><ul>
+<li>Un <strong>file soluzione</strong> nella root del progetto.</li>
+<li>Tanti file progetto discendenti della soluzione, uno per ogni modulo della mia applicazione.</li>
+<li>Sotto una directory <code>src/</code> inseriamo il codice sorgente della nostra applicazione (possono essere previsti più progetti sotto <code>src/</code>)</li>
+<li>La directory <code>tests/</code> specchia la stessa gerarchia dei file e delle cartelle di <code>src/</code></li>
+</ul>
+</div>
+</div>
+</div>
+</section><section>
+<h3 id="alcune-regole-di-clean-code">(<em>alcune</em>) Regole di CLEAN Code</h3>
+<ul>
+<li>Il codice si scrive in <strong>inglese</strong>!</li>
+<li><em>Specify the intent</em>
+<ul>
+<li>i nomi delle variabili, classi, oggetti, funzioni o qualunque altra cosa di vostra creazione devono essere SIGNIFICATIVI! No <code>pippo</code>, <code>pluto</code>, <code>f(x)</code>&hellip;</li>
+</ul>
+</li>
+<li>In C# si usa il <strong>PascalCase</strong>!
+<ul>
+<li><code>PascalCase</code> per nomi di classi, metodi, proprietà, interfacce, namespace</li>
+<li><code>camelCase</code> per le variabili</li>
+<li><code>UPPER_CASE_SNAKE_CASE</code> per le costanti</li>
+</ul>
+</li>
+<li>Un tab (equivalente a 2 spazi o 4 spazi a seconda della configurazione) per le indentazioni
+<ul>
+<li>no codice inline o codice mal indentato!</li>
+</ul>
+</li>
+<li>altre regole sono assimilabili da qui: <a href="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1272/course/style_guide/">https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1272/course/style_guide/</a>
+<ul>
+<li>altre ne incontreremo strada facendo</li>
+</ul>
+</li>
+</ul>
 
 </section>
 </section><section>
-<p><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.mos.cms.futurecdn.net%2FCcD2hbxVtfyvg5Q923eebM.jpg&amp;f=1&amp;nofb=1&amp;ipt=8478f0cb985c8f3a744229931c01e03eca07c37df471f14807cfd2f817c67faa" alt="Alternative text"></p>
-<h4 id="inline-images">Inline images</h4>
-</section><section>
-<h2 id="fallback-to-shortcodes-for-resizing">Fallback to shortcodes for resizing</h2>
-<p>Autoresize specifying</p>
-<ul>
-<li><code>max-w</code> (percent of parent element width) and/or <code>max-h</code> (percent of viewport height) as max sizes , and</li>
-<li><code>width</code> and/or <code>height</code> as <em>exact</em> sizes (as percent of viewport size)</li>
-</ul>
-</section>
 
 
 <section data-shortcode-section>
-<section data-noprocess data-shortcode-slide
-      data-background-iframe="animations/8bitmoon.html"
-      data-background-interactive="false">
-<h2 id="with-background"><strong>With background!</strong></h2>
-<p>Explore the <code>static/animations</code> folder to find out more!</p>
-</section>
-<section data-noprocess data-shortcode-slide
-      data-background-iframe="animations/hexagons.html"
-      data-background-interactive="false">
-<h2 id="hexagons-everywhere"><strong>Hexagons everywhere</strong></h2>
-</section>
-<section data-noprocess data-shortcode-slide
-      data-background-iframe="animations/melting-lines.html"
-      data-background-interactive="false">
-<h2 id="melting-lines"><strong>Melting lines</strong></h2>
-</section>
-<section data-noprocess data-shortcode-slide
-      data-background-iframe="animations/ribbons.html"
-      data-background-interactive="false">
-<h2 id="ribbons"><strong>Ribbons</strong></h2>
-</section>
-<section data-noprocess data-shortcode-slide
-      data-background-iframe="animations/particles.html"
-      data-background-interactive="false">
-<h2 id="particles"><strong>Particles</strong></h2>
-</section>
-<section data-noprocess data-shortcode-slide
-      data-background-iframe="animations/grainient.html"
-      data-background-interactive="false">
-<h2 id="grainient">Grainient</h2>
-
-</section>
+<h4 id="parte-02">Parte <strong>#02</strong></h4>
+<h2 id="oop---le-basi"><strong>O</strong>.<strong>O</strong>.<strong>P</strong>. - le basi</h2>
 </section><section>
-<h2 id="tick-and-cross">Tick and Cross</h2>
-<ul>
-<li><i class="fa-solid fa-check" style="color: green;"></i>
-This is something good</li>
-<li><i class="fa-solid fa-xmark" style="color: red;"></i>
-This is something bad</li>
-</ul>
-</section><section>
-<h2 id="chartjs">Chart.js</h2>
-
-
-
-
-
-
-<div style="">
-    <div style="width: 100%;height: 300px; display: block;">
-        <canvas id="1fc84c5cd8fcfd44b8bc6a2dd4acce5e"></canvas>
-    </div>
-</div>
-<script src="./extlib/js/chart.min.js"></script>
-<script type="text/javascript">
-    var ctx = document.getElementById('1fc84c5cd8fcfd44b8bc6a2dd4acce5e').getContext('2d');
-    var options = 
-{
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: 'Bar Chart',
-            data: [12, 19, 18, 16, 13, 14],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        maintainAspectRatio: false,
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-};
-    new Chart(ctx, options);
-</script>
-
-</section><section>
-<h2 id="fontawesome">FontAwesome</h2>
-<p><i class="fa-solid fa-mug-hot"></i>
-<i class="fa-solid fa-lemon"></i>
-<i class="fa-solid fa-flask"></i>
-<i class="fa-solid fa-apple-whole"></i>
-<i class="fa-solid fa-bacon"></i>
-<i class="fa-solid fa-beer-mug-empty"></i>
-<i class="fa-solid fa-pepper-hot"></i></p>
-</section><section>
-<h2 id="bootstrap-1">Bootstrap 1</h2>
-<div class="card w-100" >
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/View_of_Cesena_from_the_Abbey.jpg/1920px-View_of_Cesena_from_the_Abbey.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-</section><section>
-<h2 id="bootstrap-2">Bootstrap 2</h2>
-<p><button type="button" class="btn btn-primary">Primary</button>
-<button type="button" class="btn btn-secondary">Secondary</button>
-<button type="button" class="btn btn-success">Success</button>
-<button type="button" class="btn btn-danger">Danger</button>
-<button type="button" class="btn btn-warning">Warning</button>
-<button type="button" class="btn btn-info">Info</button>
-<button type="button" class="btn btn-light">Light</button>
-<button type="button" class="btn btn-dark">Dark</button></p>
-<p><button type="button" class="btn btn-link">Link</button></p>
-</section><section>
-<h2 id="low-res-plain-markdown">Low res, plain markdown</h2>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Scavolino_innevata.jpg/260px-Scavolino_innevata.jpg" alt=""></p>
-</section><section>
-<h2 id="hi-res-plain-markdown">Hi res, plain markdown</h2>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Scavolino_innevata.jpg" alt=""></p>
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-background-image="https://upload.wikimedia.org/wikipedia/commons/6/6c/Scavolino_innevata.jpg">
-  
-<h1 id="large-images-as-background">Large images as background</h1>
-<h2 id="may-affect-printing">(May affect printing)</h2>
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-background-opacity="0.95"
-      data-background-video="https://github.com/DanySK/slides-2024-acsos-imageonomics/raw/master/content/nonnadir.mkv"
-      data-background-video-loop="true"
-      data-background-video-muted="true">
-  
-<h1 id="video-background">Video background</h1>
-</section><section>
-
+<h3 id="evoluzione-della-programmazione-nel-tempo">Evoluzione della programmazione nel tempo</h3>
 <div class="container-fluid m-0 p-0">
-    <div class='row '><div class='col '><div style="max-width: fit-content; margin-inline: auto;" class="position-relative text-center accentify-top-right">
-    <h1 id="latex">$$\LaTeX{}$$</h1>
+    <div class='row '><div class='col '><div class="callout note">
+    <div class="callout-background py-4 px-5"><div class="callout-content"><h4 id="fase-01--machine-lang"><strong>Fase 01</strong> <br> Machine Lang</h4>
+<p>(prima degli anni &lsquo;50)</p>
+</div></div>
 </div>
 </div>
-<div class='col '><p>$\textbf{Exercise}$</p>
-<p>Prove that $a_n = \frac{2n + 1}{n + 2} \xrightarrow[n \to +\infty]{} 2$.</p>
-<p>$\textbf{Proof}$</p>
-<p>Given $\varepsilon &gt; 0,\ \exists m_\varepsilon \in \mathbb{N}:$</p>
-<div>
-\begin{equation}
-    \begin{split}
-        \left\lvert a_n - l \right\rvert &= \left\lvert \frac{2n + 1}{n + 2} - 2 \right\rvert \leq \varepsilon, \qquad \forall n \in \mathbb{N} \\
-        &= \left\lvert \frac{2n + 1 -2n - 4}{n + 2} \right\rvert \leq \varepsilon \\ 
-        &\Longleftrightarrow \frac{3}{n + 2} \leq \varepsilon \\
-        &\Longleftrightarrow n + 2 \geq \frac{3}{\varepsilon} \\
-        &\Longleftrightarrow n \geq \frac{3}{\varepsilon} - 2
-    \end{split}
-\end{equation}
-</div>
-<p>I can choose $m_\varepsilon = \left[\frac{3}{\varepsilon} - 2\right] + 1$ in order to satisfy the limit. $\#$</p>
+<div class='col '><div class="callout note">
+    <div class="callout-background py-4 px-5"><div class="callout-content"><h4 id="fase-02--assembly"><strong>Fase 02</strong> <br> Assembly</h4>
+<p>(anni &lsquo;50 - &lsquo;60)</p>
+</div></div>
 </div>
 </div>
+<div class='col '><div class="callout note">
+    <div class="callout-background py-4 px-5"><div class="callout-content"><h4 id="fase-03--linguaggio-c"><strong>Fase 03</strong> <br> Linguaggio C</h4>
+<p>(anni &lsquo;70 - &lsquo;80)</p>
+</div></div>
 </div>
-</section><section>
-<h1 id="code-snippets">Code snippets</h1>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff6ac1">val</span> x = pippo
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;display:grid;"><code class="nohighlight" data-noescape><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff6ac1">package</span> main
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#ff6ac1">import</span> <span style="color:#5af78e">&#34;fmt&#34;</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>
-</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#ff5c57">func</span> <span style="color:#57c7ff">main</span>() {
-</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>    fmt.<span style="color:#57c7ff">Println</span>(<span style="color:#5af78e">&#34;Hello world!&#34;</span>)
-</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>}
-</span></span></code></pre></div><p>You can highlight some lines of code!</p>
-</section><section>
-<h1 id="tables">Tables</h1>
-<p>Colons can be used to align columns.</p>
-<table>
-  <thead>
-      <tr>
-          <th>Tables</th>
-          <th style="text-align: center">Are</th>
-          <th style="text-align: right">Cool</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>col 3 is</td>
-          <td style="text-align: center">right-aligned</td>
-          <td style="text-align: right">$1600</td>
-      </tr>
-      <tr>
-          <td>col 2 is</td>
-          <td style="text-align: center">centered</td>
-          <td style="text-align: right">$12</td>
-      </tr>
-      <tr>
-          <td>zebra stripes</td>
-          <td style="text-align: center">are neat</td>
-          <td style="text-align: right">$1</td>
-      </tr>
-  </tbody>
-</table>
-<p>There must be at least 3 dashes separating each header cell.
-The outer pipes (|) are optional, and you don&rsquo;t need to make the
-raw Markdown line up prettily. You can also use inline Markdown.</p>
-</section><section>
-<h1 id="quotes">Quotes</h1>
+</div>
+<div class='col '><div class="callout note">
+    <div class="callout-background py-4 px-5"><div class="callout-content"><h4 id="fase-04--oop-java-"><strong>Fase 04</strong> <br> OOP (Java, &hellip;)</h4>
+<p>(anni &lsquo;90 - &lsquo;2000)</p>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+<br>
+<ul>
+<li>
+<p>Col tempo ci si è accorti che, con la crescente <strong>potenza computazionale</strong> dei calcolatori e la crescente <strong>potenzialità</strong> dei problemi risolvibili da essi, si doveva avere la possibilità di codificare la soluzione di un dato problema in un linguaggio che &ldquo;trascurasse&rdquo; i dettagli di <strong>basso livello</strong> della macchina che la eseguiva.</p>
+</li>
+<li>
+<p>Modellazione delle <strong>entità</strong> che costituiscono un dominio applicativo, e delle varie <strong>relazioni</strong> tra di loro - minimizzando la gestione di aspetti non inerenti alla risoluzione del problema.
+<br>
+<br></p>
+</li>
+</ul>
 <blockquote>
-<p>Multiple
-lines
-of
-a
-single
-quote
-get
-joined</p>
-</blockquote>
-<blockquote>
-<p>Very long one liners of Markdown text automatically get broken into a multiline quotation, which is then rendered in the slides.</p>
+<p>Necessità di ASTRAZIONE!</p>
 </blockquote>
 </section><section>
-<h1 id="fragments">Fragments</h1>
-<ul>
-<li><span class='fragment '
-  >
-  pluto
-</span></li>
-<li><span class='fragment '
-  >
-  pluto
-</span></li>
-<li><span class='fragment '
-  >
-  pluto
-</span></li>
-</ul>
+<h2 id="everything-is-an-object"><strong>Everything</strong> is an <strong>object</strong>.</h2>
 </section><section>
-<h1 id="stacking-images-with-fragments">Stacking images with Fragments</h1>
-
-<div class="container-fluid m-0 p-0">
-    <div class='row '><div class='col '><p class="fragment" data-fragment-index="0">Pippo</p>
-<p class="fragment" data-fragment-index="1">Pluto</p>
-<p class="fragment" data-fragment-index="2">Paperino</p>
-</div>
-<div class='col '><div class="r-stack">
-  <img
-    class="fragment current-visible"
-    data-fragment-index="0"
-    src="https://www.topolino.it/wp-content/uploads/2019/12/pippointera.png"
-    width="450"
-    height="300"
-  />
-  <img
-    class="fragment current-visible"
-    data-fragment-index="1"
-    src="https://www.topolino.it/wp-content/uploads/2019/12/plutointera.png"
-    width="300"
-    height="450"
-  />
-  <img
-    class="fragment current-visible"
-    data-fragment-index="2"
-    src="https://it.wikifur.com/w/images/thumb/6/6f/Donald_Duck.png/362px-Donald_Duck.png"
-    width="400"
-    height="400"
-  />
-</div>
-</div>
-</div>
-</div>
+<p>#01. <strong>Everything is an object</strong>. Un oggetto è una <strong>entità</strong> che fornisce operazioni per essere manipolata.</p>
+<br>
+<p>#02. Un <strong>programma</strong> è un <em>set di oggetti</em> che si comunicano cosa fare scambiandosi <strong>messaggi</strong>. Questi messaggi sono richieste per eseguire
+le <strong>operazioni fornite</strong>.</p>
+<br>
+<p>#03. Un oggetto ha una <strong>memoria</strong> fatta di altri oggetti. Un oggetto è ottenuto <strong>impacchettando altri oggetti</strong>.</p>
+<br>
+<p>#04. Ogni oggetto è <strong>istanza</strong> di una <strong>classe</strong>. Una <strong>classe</strong> descrive il comportamento dei suoi oggetti.</p>
+<br>
+<p>#05. Tutti gli oggetti di una classe possono ricevere gli <strong>stessi messaggi</strong>. La classe indica tra le altre cose <strong>quali operazioni</strong> sono fornite, quindi per comunicare con un oggetto basta sapere qual è la sua classe.</p>
 </section><section>
-<h1 id="graphs-via-gravizo">Graphs via Gravizo</h1>
-
-
-
-  
-    
-  
-
-
-<figure>
-  <img
-    src='https://g.gravizo.com/svg?%0adigraph%20G%20%7b%0aaize%20%3d%224%2c4%22%3b%0amain%20%5bshape%3dbox%5d%3b%0amain%20-%3e%20parse%20%5bweight%3d8%5d%3b%0aparse%20-%3e%20execute%3b%0amain%20-%3e%20init%20%5bstyle%3ddotted%5d%3b%0amain%20-%3e%20cleanup%3b%0aexecute%20-%3e%20%7b%20make_string%3b%20printf%7d%0ainit%20-%3e%20make_string%3b%0aedge%20%5bcolor%3dred%5d%3b%0amain%20-%3e%20printf%20%5bstyle%3dbold%2clabel%3d%22100%20times%22%5d%3b%0amake_string%20%5blabel%3d%22make%20a%20string%22%5d%3b%0anode%20%5bshape%3dbox%2cstyle%3dfilled%2ccolor%3d%22.7%20.3%201.0%22%5d%3b%0aexecute%20-%3e%20compare%3b%0a%7d%0a'
-    alt='Example Gravizo graph'
-    width="100%"
-    />
-    <figcaption>Example Gravizo graph</figcaption>
-</figure>
-
+<h3 id="qualche-esempio">Qualche esempio</h3>
+<p>E01: Circle, Square, Triangle
+E02: Studente, Professore, Classe</p>
 </section><section>
-<h1 id="graphs-via-mermaidjs">Graphs via mermaid.js</h1>
-<div class="mermaid">classDiagram
-  Class01 <|-- AveryLongClass : Coosssl
-  Class03 *-- Class04
-  Class05 o-- Class06
-  Class07 .. Class08
-  Class09 --> C2 : Where am i?
-  Class09 --* C3
-  Class09 --|> Class07
-  Class07 : equals()
-  Class07 : Object[] elementData
-  Class01 : size()
-  Class01 : int chimp
-  Class01 : int gorillasaaaaaaaaaaaaaaaaaaaaaa
-  Class08 <--> C2: Cool label
-</div>
+<p>// TBC&hellip;</p>
 
-</section><section>
-<h1 id="graphs-via-mermaidjs-with-options">Graphs via mermaid.js with options</h1>
-<div class="mermaid">%%{init: {'theme':'default', 'themeVariables': { 'fontSize': '.34em', 'fontFamily': 'verdana' }}}%%
-classDiagram
-  Class01 <|-- AveryLongClass : Coosssl
-  Class03 *-- Class04
-  Class05 o-- Class06
-  Class07 .. Class08
-  Class09 --> C2 : Where am i?
-  Class09 --* C3
-  Class09 --|> Class07
-  Class07 : equals()
-  Class07 : Object[] elementData
-  Class01 : size()
-  Class01 : int chimp
-  Class01 : int gorillasaaaaaaaaaaaaaaaaaaaaaa
-  Class08 <--> C2: Cool label
-</div>
-
-</section><section>
-<h1 id="graphs-via-mermaidjs-2">Graphs via mermaid.js 2</h1>
-<div class="mermaid">graph TD
-  SL([fa:fa-user second level]) --> L[solution]
-  L -- solution email --> db[(mysql)]
-  db --> X[automatic]
-  X --> CM([fa:fa-users first level])
-  db -- Email --> c([customer support]);
-</div>
-
-</section><section>
-<h1 id="graphs-via-mermaidjs-3">Graphs via mermaid.js 3</h1>
-<div class="mermaid">gitGraph
-  commit id: "Initialize project"
-  commit id: "Make some changes"
-  branch develop
-  checkout develop
-  commit
-  commit
-  checkout main
-  merge develop
-  commit
-  commit
-</div>
-
-</section><section>
-<h1 id="keystrokes">Keystrokes</h1>
-<p><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Del</kbd></p>
-</section><section>
-<h1 id="qr-code">QR code</h1>
-<div id="YWM2YmI2NjllNDBlNDRhOGQ5ZjhmMGM5NGRmYzYzNzM0MDQ5ZGNmNjIxOWFhYzc3ZjAyZWRmOTRiOTE2MmMwOQ==" style=""></div>
-<script type="text/javascript">
-    const qrCode = new QRCodeStyling({
-        width:  300 ,
-        height:  300 ,
-        type: "svg",
-        data: "https://www.google.com",
-        image: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
-        dotsOptions: {
-            color: "#000000",
-            type: "rounded"
-        },
-        backgroundOptions: {
-            color: "#ffffff",
-        },
-        imageOptions: {
-            crossOrigin: "anonymous",
-            margin:  10 
-        }
-    });
-    qrCode.append(document.getElementById("YWM2YmI2NjllNDBlNDRhOGQ5ZjhmMGM5NGRmYzYzNzM0MDQ5ZGNmNjIxOWFhYzc3ZjAyZWRmOTRiOTE2MmMwOQ=="));
-</script>
-</section><section>
-<h1 id="import-shared-slides">Import shared slides</h1>
-<!-- write-here "shared-slides/devops/devops-intro.md" -->
-<!-- end-write -->
+</section>
 </section>
 
   
@@ -822,35 +384,10 @@ classDiagram
   
 
   
-    
-  
 
   
 
 
-
-  <script type="text/javascript" src="./extlib/js/mermaid.min.js"></script>
-  <script type="text/javascript">
-    mermaid.initialize({startOnLoad: false});
-    let render = (event) => {
-      let mermaidElems = event.currentSlide.querySelectorAll('.mermaid');
-      if (!mermaidElems.length){
-          return
-      }
-      mermaidElems.forEach(mermaidElem => {
-          let processed = mermaidElem.getAttribute('data-processed');
-          if (!processed){
-              
-              mermaid.init(undefined, mermaidElem);
-          }
-      });
-    };
-    
-    render({currentSlide: Reveal.getCurrentSlide()});
-
-    Reveal.on('slidechanged', render);
-    Reveal.on('ready', render);
-  </script>
 
     <script type="text/javascript" id="MathJax-script" async src="./extlib/js/mathjax.min.js"></script>
 <script>
