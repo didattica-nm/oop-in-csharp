@@ -248,6 +248,13 @@ Esempio del contenuto di un **file progetto** (`.csproj`)
 
 ### (*alcune*) Regole di CLEAN Code
 
+{{% multicol %}}
+{{% col class="col-3" %}}
+
+![Clean Code book](imgs/cleancode.jpg)
+
+{{% /col %}}
+{{% col %}}
 - Il codice si scrive in **inglese**!
 - *Specify the intent*
   - i nomi delle variabili, classi, oggetti, funzioni o qualunque altra cosa di vostra creazione devono essere SIGNIFICATIVI! No `pippo`, `pluto`, `f(x)`...
@@ -255,10 +262,13 @@ Esempio del contenuto di un **file progetto** (`.csproj`)
   - `PascalCase` per nomi di classi, metodi, proprietà, interfacce, namespace
   - `camelCase` per le variabili
   - `UPPER_CASE_SNAKE_CASE` per le costanti
-- Un tab (equivalente a 2 spazi o 4 spazi a seconda della configurazione) per le indentazioni
+- Un tab (equivalente a 2 spazi o 4 spazi a seconda della configurazione dell'IDE) per le indentazioni
   - no codice inline o codice mal indentato!
-- altre regole sono assimilabili da qui: https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1272/course/style_guide/
+- altre regole sono possono essere prese in prestito da qui: https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1272/course/style_guide/
   - altre ne incontreremo strada facendo
+{{% /col %}}
+{{% /multicol %}}
+
 
 {{% /section %}}
 
@@ -342,11 +352,128 @@ le **operazioni fornite**.
 
 ### Qualche esempio
 
-E01: Circle, Square, Triangle
-E02: Studente, Professore, Classe
+{{% multicol %}}
+{{% col %}}
+### E#00 
+`ComplexNumber`
+{{% /col %}}
+{{% col %}}
+### E#01 
+`Circle`, `Square`, `Triangle`
+{{% /col %}}
+{{% col %}}
+### E#02  
+`Student`, `Professor`, `Class`
+{{% /col %}}
+{{% /multicol %}}
 
 ---
 
-// TBC...
+{{% multicol %}}
+{{% col %}}
+
+#### POV: Progettista
+```csharp
+namespace BlaisePascal.OOPExamples.Domain;
+
+public class ComplexNumber
+{
+    public int Real { get; set; }
+    public int Imaginary { get; set; }
+    
+    public ComplexNumber(int re, int im)
+    {
+        this.Real = re;
+        this.Imaginary = im;
+    }
+
+    public ComplexNumber Add(ComplexNumber other)
+    {
+        return new ComplexNumber(
+            this.Real + other.Real, 
+            this.Imaginary + other.Imaginary
+        );
+    }
+
+    public ComplexNumber Subtract(ComplexNumber other)
+    {
+        return this.Add(new ComplexNumber(
+            -other.Real, 
+            -other.Imaginary
+        ));
+    }
+
+    public ComplexNumber Multiply(ComplexNumber other)
+    {
+        // Formula: (a + ib)*(c * id) = (ac - bd) + (ad + bc)*i
+        int a = this.Real; int b = this.Imaginary;
+        int c = other.Real; int d = other.Imaginary;
+        return new ComplexNumber(a*c - b*d, a*d + b*c);
+    } // [...]
+}
+```
+{{% /col %}}
+{{% col %}}
+#### POV: Utilizzatore
+(Cosa vede chi utilizza la libreria)
+```csharp
+namespace BlaisePascal.OOPExamples.Domain.UnitTests;
+
+public class ComplexNumberTest
+{
+    [Fact]
+    public void Constructor_SetsRealAndImaginary()
+    {
+        // Arrange
+        var complex = new ComplexNumber(2, 3);
+        // Act & Assert
+        Assert.Equal(2, complex.Real);
+        Assert.Equal(3, complex.Imaginary);
+    }
+
+    [Fact]
+    public void Add_ReturnsSumOfRealAndImaginary()
+    {
+        // Arrange
+        var c1 = new ComplexNumber(1, 2);
+        var c2 = new ComplexNumber(3, 4);
+
+        // Act
+        var result = c1.Add(c2);
+
+        // Assert
+        Assert.Equal(4, result.Real);
+        Assert.Equal(6, result.Imaginary);
+    }
+
+    [Fact]
+    // [...]
+}
+```
+{{% /col %}}
+{{% /multicol %}}
+
+---
+
+### **4 pillars** of Object Oriented Programming
+
+{{% multicol %}}
+{{% col %}}
+#### 01. Astrazione
+Paradigma orientato al problem solving, prendendo le distanze da dettagli irrilevanti della macchina utilizzata.
+{{% /col %}}
+{{% col %}}
+#### 02. Incapsulamento
+Posso nascondere in una classe informazioni che non voglio rendere visibili all'esterno.
+{{% /col %}}
+{{% col %}}
+#### 03. Ereditarietà
+Proprietà e metodi possono essere ereditati di classe in classe, sovrascritti oppure estesi.
+{{% /col %}}
+{{% col %}}
+#### 04. Polimorfismo
+Lo stesso metodo o la stessa proprietà può assumere comportamenti diversi a seconda dello scenario.
+{{% /col %}}
+{{% /multicol %}}
 
 {{% /section %}}
