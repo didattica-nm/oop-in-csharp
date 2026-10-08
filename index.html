@@ -223,7 +223,10 @@
 </div>
 </section><section>
 <h3 id="alcune-regole-di-clean-code">(<em>alcune</em>) Regole di CLEAN Code</h3>
-<ul>
+<div class="container-fluid m-0 p-0">
+    <div class='row '><div class='col col-3'><p><img src="imgs/cleancode.jpg" alt="Clean Code book"></p>
+</div>
+<div class='col '><ul>
 <li>Il codice si scrive in <strong>inglese</strong>!</li>
 <li><em>Specify the intent</em>
 <ul>
@@ -237,17 +240,20 @@
 <li><code>UPPER_CASE_SNAKE_CASE</code> per le costanti</li>
 </ul>
 </li>
-<li>Un tab (equivalente a 2 spazi o 4 spazi a seconda della configurazione) per le indentazioni
+<li>Un tab (equivalente a 2 spazi o 4 spazi a seconda della configurazione dell&rsquo;IDE) per le indentazioni
 <ul>
 <li>no codice inline o codice mal indentato!</li>
 </ul>
 </li>
-<li>altre regole sono assimilabili da qui: <a href="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1272/course/style_guide/">https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1272/course/style_guide/</a>
+<li>altre regole sono possono essere prese in prestito da qui: <a href="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1272/course/style_guide/">https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1272/course/style_guide/</a>
 <ul>
 <li>altre ne incontreremo strada facendo</li>
 </ul>
 </li>
 </ul>
+</div>
+</div>
+</div>
 
 </section>
 </section><section>
@@ -314,10 +320,113 @@ le <strong>operazioni fornite</strong>.</p>
 <p>#05. Tutti gli oggetti di una classe possono ricevere gli <strong>stessi messaggi</strong>. La classe indica tra le altre cose <strong>quali operazioni</strong> sono fornite, quindi per comunicare con un oggetto basta sapere qual è la sua classe.</p>
 </section><section>
 <h3 id="qualche-esempio">Qualche esempio</h3>
-<p>E01: Circle, Square, Triangle
-E02: Studente, Professore, Classe</p>
+<div class="container-fluid m-0 p-0">
+    <div class='row '><div class='col '><h3 id="e00">E#00</h3>
+<p><code>ComplexNumber</code></p>
+</div>
+<div class='col '><h3 id="e01">E#01</h3>
+<p><code>Circle</code>, <code>Square</code>, <code>Triangle</code></p>
+</div>
+<div class='col '><h3 id="e02">E#02</h3>
+<p><code>Student</code>, <code>Professor</code>, <code>Class</code></p>
+</div>
+</div>
+</div>
 </section><section>
-<p>// TBC&hellip;</p>
+<div class="container-fluid m-0 p-0">
+    <div class='row '><div class='col '><h4 id="pov-progettista">POV: Progettista</h4>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#ff6ac1">namespace</span> BlaisePascal.OOPExamples.Domain;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">ComplexNumber</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">int</span> Real { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">set</span>; }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">int</span> Imaginary { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">set</span>; }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> ComplexNumber(<span style="color:#9aedfe">int</span> re, <span style="color:#9aedfe">int</span> im)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">this</span>.Real = re;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">this</span>.Imaginary = im;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> ComplexNumber Add(ComplexNumber other)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">new</span> ComplexNumber(
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">this</span>.Real + other.Real, 
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">this</span>.Imaginary + other.Imaginary
+</span></span><span style="display:flex;"><span>        );
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> ComplexNumber Subtract(ComplexNumber other)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">this</span>.Add(<span style="color:#ff6ac1">new</span> ComplexNumber(
+</span></span><span style="display:flex;"><span>            -other.Real, 
+</span></span><span style="display:flex;"><span>            -other.Imaginary
+</span></span><span style="display:flex;"><span>        ));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> ComplexNumber Multiply(ComplexNumber other)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e">// Formula: (a + ib)*(c * id) = (ac - bd) + (ad + bc)*i</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">int</span> a = <span style="color:#ff6ac1">this</span>.Real; <span style="color:#9aedfe">int</span> b = <span style="color:#ff6ac1">this</span>.Imaginary;
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">int</span> c = other.Real; <span style="color:#9aedfe">int</span> d = other.Imaginary;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">new</span> ComplexNumber(a*c - b*d, a*d + b*c);
+</span></span><span style="display:flex;"><span>    } <span style="color:#78787e">// [...]</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
+<div class='col '><h4 id="pov-utilizzatore">POV: Utilizzatore</h4>
+<p>(Cosa vede chi utilizza la libreria)</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#ff6ac1">namespace</span> BlaisePascal.OOPExamples.Domain.UnitTests;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">ComplexNumberTest</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#57c7ff">    [Fact]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">void</span> Constructor_SetsRealAndImaginary()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e">// Arrange</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> complex = <span style="color:#ff6ac1">new</span> ComplexNumber(<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e">// Act &amp; Assert</span>
+</span></span><span style="display:flex;"><span>        Assert.Equal(<span style="color:#ff9f43">2</span>, complex.Real);
+</span></span><span style="display:flex;"><span>        Assert.Equal(<span style="color:#ff9f43">3</span>, complex.Imaginary);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="color:#57c7ff">
+</span></span></span><span style="display:flex;"><span><span style="color:#57c7ff">    [Fact]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">void</span> Add_ReturnsSumOfRealAndImaginary()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e">// Arrange</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> c1 = <span style="color:#ff6ac1">new</span> ComplexNumber(<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> c2 = <span style="color:#ff6ac1">new</span> ComplexNumber(<span style="color:#ff9f43">3</span>, <span style="color:#ff9f43">4</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e">// Act</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> result = c1.Add(c2);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e">// Assert</span>
+</span></span><span style="display:flex;"><span>        Assert.Equal(<span style="color:#ff9f43">4</span>, result.Real);
+</span></span><span style="display:flex;"><span>        Assert.Equal(<span style="color:#ff9f43">6</span>, result.Imaginary);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="color:#57c7ff">
+</span></span></span><span style="display:flex;"><span><span style="color:#57c7ff">    [Fact]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">// [...]</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
+</div>
+</div>
+</section><section>
+<h3 id="4-pillars-of-object-oriented-programming"><strong>4 pillars</strong> of Object Oriented Programming</h3>
+<div class="container-fluid m-0 p-0">
+    <div class='row '><div class='col '><h4 id="01-astrazione">01. Astrazione</h4>
+<p>Paradigma orientato al problem solving, prendendo le distanze da dettagli irrilevanti della macchina utilizzata.</p>
+</div>
+<div class='col '><h4 id="02-incapsulamento">02. Incapsulamento</h4>
+<p>Posso nascondere in una classe informazioni che non voglio rendere visibili all&rsquo;esterno.</p>
+</div>
+<div class='col '><h4 id="03-ereditarietà">03. Ereditarietà</h4>
+<p>Proprietà e metodi possono essere ereditati di classe in classe, sovrascritti oppure estesi.</p>
+</div>
+<div class='col '><h4 id="04-polimorfismo">04. Polimorfismo</h4>
+<p>Lo stesso metodo o la stessa proprietà può assumere comportamenti diversi a seconda dello scenario.</p>
+</div>
+</div>
+</div>
 
 </section>
 </section>
