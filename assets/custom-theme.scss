@@ -9,32 +9,29 @@
 // Fonts - consider using https://www.fonttrio.xyz/ for less effort
 
 // Headings
-@import url("../fonts/PlusJakartaSans/PlusJakartaSans.css");
-// Body
-@import url("../fonts/Inter/Inter.css");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
 // Monospace
-@import url("../fonts/JetBrainsMono/JetBrainsMono.css");
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono');
 
-$mainFont: "Inter", sans-serif;
-$headingFont: "Plus Jakarta Sans";
-$codeFont: "JetBrains Mono";
+$mainFont: 'Titillium Web', sans-serif;
+$headingFont: 'Space Grotesk';
+$codeFont: 'JetBrains Mono';
 
-/*
-	You may want a logo to be displayed
-	on the bottom-left of the slides
+/* 
+	You may want a logo to be displayed 
+	on the bottom-left of the slides 
 */
-$logo: url("../imgs/logo-placeholder.png");
-$author: "G. Samsa";
+$logo: url("../imgs/pascal-logo.png");
 
 $dark-theme: false !default;
 
 // DEFAULT COLORS: LIGHT MODE
 // Background of the presentation
-$backgroundColor: #fefefe;
+$backgroundColor: #fcfcfc;
 
 $mainFontSize: 40px;
 $mainColor: #000000;
-$accentClr: #760000;
+$accentClr: #dc7b04;
 $codeClr: $accentClr;
 
 // Callouts styling
@@ -52,17 +49,17 @@ $overlayElementFgColor: 0, 0, 0;
 
 // OVERRIDES COLORS IF DARK MODE SET TO TRUE
 @if $dark-theme {
-    // Background of the presentation
-    $backgroundColor: #000000;
+	// Background of the presentation
+	$backgroundColor: #000000;
 
-    $mainFontSize: 40px;
-    $mainColor: white;
-    $accentClr: #760000;
+	$mainFontSize: 40px;
+	$mainColor: white;
+	$accentClr: #760000;
 
-    // Colors used for UI elements that are overlaid on top of
-    // the presentation
-    $overlayElementBgColor: 240, 240, 240;
-    $overlayElementFgColor: 0, 0, 0;
+	// Colors used for UI elements that are overlaid on top of
+	// the presentation
+	$overlayElementBgColor: 240, 240, 240;
+	$overlayElementFgColor: 0, 0, 0;
 }
 
 // Text selection
@@ -73,7 +70,7 @@ $selectionColor: invert($backgroundColor);
 $blockMargin: 10px;
 
 // Headings
-$headingMargin: 30px 0;
+$headingMargin: 2% 0;
 $headingLineHeight: 1;
 $headingColor: $mainColor;
 $headingLetterSpacing: normal;
@@ -82,10 +79,11 @@ $headingTextShadow: none;
 $headingFontWeight: bold;
 $heading1TextShadow: $headingTextShadow;
 
-$heading1Size: 3.77em;
-$heading2Size: 2.11em;
+$heading1Size: 2.7em;
+$heading2Size: 2.00em;
 $heading3Size: 1.55em;
-$heading4Size: 1em;
+$heading4Size: 1.00em;
+$heading5Size: .90em;
 
 // Links and actions
 $linkColor: lighten($accentClr, 20%);
@@ -94,7 +92,7 @@ $linkColorHover: lighten($linkColor, 20%);
 // Generates the presentation background, can be overridden
 // to return a background image or gradient
 @mixin bodyBackground() {
-    background: $backgroundColor;
+	background: $backgroundColor;
 }
 
 @import "reveal-js/dist/theme/template/theme";
@@ -103,112 +101,98 @@ $linkColorHover: lighten($linkColor, 20%);
 // Override **some** bootstrap default values
 ol,
 ul {
-    padding-left: 0rem !important;
+	padding-left: 0rem !important;
 }
 
-.reveal [class*="primary"] {
-    --bs-primary: #{$accentClr};
-    --bs-primary-bg: #{$accentClr};
-    --bs-primary-rgb:
-        #{red($accentClr)}, #{green($accentClr)}, #{blue($accentClr)};
-
-    // Buttons variable
-    --bs-btn-bg: #{$accentClr};
-    --bs-btn-border-color: #{$accentClr};
-    --bs-btn-color: #{fff};
-    --bs-btn-bg: #{$accentClr};
-    --bs-btn-border-color: #{$accentClr};
-    --bs-btn-hover-color: #{$backgroundColor};
-    --bs-btn-hover-bg: #{$accentClr};
-    --bs-btn-hover-border-color: #{$accentClr};
-    --bs-btn-focus-shadow-rgb: 49, 132, 253;
-    --bs-btn-active-color: #{$backgroundColor};
-    --bs-btn-active-bg: #{$accentClr};
-    --bs-btn-active-border-color: #{$accentClr};
-    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #{$backgroundColor};
-    --bs-btn-disabled-bg: #{$accentClr};
-    --bs-btn-disabled-border-color: #{$accentClr};
-    color: $backgroundColor !important;
+h5 {
+	font-size: $heading5Size !important;
 }
 
 .reveal .slide-background:not(.stack, [data-background-hash]) {
-    background-color: transparent;
-    // Uncomment to add bottom right logo in every slide
-    background-image: $logo;
-    background-repeat: no-repeat;
-    background-position: 1.5% 97%;
-    background-size: 15%;
-    background-clip: border-box;
+	background-color: transparent;
+	// Uncomment to add bottom right logo in every slide
+	background-image: $logo;
+	background-repeat: no-repeat;
+	background-position: -30% 100%;
+	background-size: 40%;
+	background-clip: border-box;
+	filter: opacity(.2) grayscale(100%);
 
-    // Uncomment to add slides border
-    // border-style: solid;
-    // border-color: $accentClr;
-    // border-width: 0.3em;
+	// Uncomment to add slides border
+	// border-style: solid;
+	// border-color: $accentClr;
+	// border-width: 0.3em;
 }
 
 .reveal .navigate-left {
-    display: flex;
+	display: flex;
 }
 
 .reveal .navigate-left::before {
-    content: $author;
-    min-width: max-content;
-    display: block;
-    align-content: center;
-    padding-right: 10px;
-    color: $accentClr;
-    font-size: 2em;
-    font-family: $mainFont;
+	content: "N. Magi";
+	min-width: max-content;
+	display: block;
+	align-content: center;
+	padding-right: 10px;
+	color: $accentClr;
+	font-size: 2em;
+	font-family: $mainFont;
 }
 
 .reveal strong,
 .reveal b {
-    font-weight: bold;
-    color: $accentClr;
+	font-weight: bold;
+	color: $accentClr;
 }
 
 .reveal em {
-    font-style: italic;
-    color: $accentClr;
+	font-style: italic;
+	color: $accentClr;
 }
 
 .reveal section img {
-    border: 0em;
-    box-shadow: none;
-    max-width: 100%;
-    max-height: 23em;
-    height: auto;
-    object-fit: contain;
+	border: 0em;
+	max-width: 100%;
+	max-height: 23em;
+	height: auto;
+	object-fit: cover;
+}
+
+.reveal section img:not(.exclude) {
+	border-radius: 20px;
+	border: 5px solid black;
+	box-shadow: 7.5px 7.5px 0px rgb(15, 15, 15);
 }
 
 .reveal code:not(.nohighlight) {
-    color: $codeClr;
-    font-family: $codeFont;
-    font-weight: bold;
+	color: $codeClr;
+	font-family: $codeFont;
+	font-weight: bold;
 }
 
 .reveal .code-wrapper {
-    border-radius: 10px;
-    padding: 7px;
-    box-shadow: 2.5px 2.5px 10px rgba($mainColor, 0.3);
+	border-radius: 10px;
+	padding: 7px;
+	box-shadow: 2.5px 2.5px 10px rgba($mainColor, .3);
 }
 
 .reveal blockquote {
-    background-color: rgba($color: $accentClr, $alpha: 0.2);
-    border-radius: 20px;
-    border: 2px solid $accentClr;
-    box-shadow: 5px 5px 0px $accentClr;
-    transition: all 0.3s ease;
+	background-color: rgba($color: $accentClr, $alpha: .2);
+	border-radius: 20px;
+	border: 2px solid $accentClr;
+	box-shadow: 5px 5px 0px $accentClr;
+	transition: all 0.3s ease;
 }
 
 .reveal blockquote:hover {
-    // transition: all;
-    box-shadow: 10px 10px 0px $accentClr;
-    background-color: rgba($color: $accentClr, $alpha: 0.1);
+	// transition: all;
+	box-shadow: 0px 0px 20px $accentClr;
 }
 
-/* Pointers */
-.reveal *  {
-    cursor: url("../pointer/normal.svg") 10 10, pointer !important;
+.reveal .mermaid svg {
+	max-width: 75% !important;
+}
+
+.reveal .callout p {
+	display: inline-block;
 }
