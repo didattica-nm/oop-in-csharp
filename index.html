@@ -164,7 +164,7 @@
 <ul>
 <li><strong>Raccoglitore</strong> di progetti</li>
 <li>Gestisce le dipendenze dei vari progetti e le loro varie configurazioni</li>
-<li>Estensione <code>.sln</code></li>
+<li>Estensione <code>.sln</code> (o <code>.slnx</code>)</li>
 </ul>
 </div></div>
 </div>
@@ -294,10 +294,13 @@
 <br>
 <ul>
 <li>
-<p>Col tempo ci si è accorti che, con la crescente <strong>potenza computazionale</strong> dei calcolatori e la crescente <strong>potenzialità</strong> dei problemi risolvibili da essi, si doveva avere la possibilità di codificare la soluzione di un dato problema in un linguaggio che &ldquo;trascurasse&rdquo; i dettagli di <strong>basso livello</strong> della macchina che la eseguiva.</p>
+<p><strong>Machine Lang / Assembly / C</strong> portano ad una visione molto hardware-oriented di un problema</p>
+<ul>
+<li>gestione di memoria manuale, difficoltà di gestione degli aspetti specifici di un hardware, difficoltà a comprendere/gestire codice scritto da altri&hellip;</li>
+</ul>
 </li>
 <li>
-<p>Modellazione delle <strong>entità</strong> che costituiscono un dominio applicativo, e delle varie <strong>relazioni</strong> tra di loro - minimizzando la gestione di aspetti non inerenti alla risoluzione del problema.
+<p>Nel tempo nasce la necessità di modellare le <strong>entità</strong> che costituiscono un dominio applicativo, e delle varie <strong>relazioni</strong> tra di loro - minimizzando le risorse (<em>tempo, fatica&hellip;</em>) dedicate alla gestione di aspetti non inerenti alla risoluzione del problema.
 <br>
 <br></p>
 </li>
@@ -319,95 +322,229 @@ le <strong>operazioni fornite</strong>.</p>
 <br>
 <p>#05. Tutti gli oggetti di una classe possono ricevere gli <strong>stessi messaggi</strong>. La classe indica tra le altre cose <strong>quali operazioni</strong> sono fornite, quindi per comunicare con un oggetto basta sapere qual è la sua classe.</p>
 </section><section>
-<h3 id="qualche-esempio">Qualche esempio</h3>
+<h3 id="la-classe-lampadina">La classe <strong>Lampadina</strong></h3>
 <div class="container-fluid m-0 p-0">
-    <div class='row '><div class='col '><h3 id="e00">E#00</h3>
-<p><code>ComplexNumber</code></p>
+    <div class='row '><div class='col '><p>Rappresentazione <strong>UML</strong>
+<small>
+<strong>U</strong>nified <strong>M</strong>odelling <strong>L</strong>anguage
+</small>
+<img src="imgs/bulb.png" alt=""></p>
 </div>
-<div class='col '><h3 id="e01">E#01</h3>
-<p><code>Circle</code>, <code>Square</code>, <code>Triangle</code></p>
-</div>
-<div class='col '><h3 id="e02">E#02</h3>
-<p><code>Student</code>, <code>Professor</code>, <code>Class</code></p>
-</div>
+<div class='col '><p>Codice, pt. 1/2</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#ff6ac1">namespace</span> BlaisePascal.OOPExamples.Domain;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">enum</span> State { ON, OFF }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">Bulb</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">// &#34;Memoria&#34; dell&#39;oggetto</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#9aedfe">int</span> _brightness;
+</span></span><span style="display:flex;"><span>    State _state;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">// Costruttore</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> Bulb()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">this</span>._brightness = <span style="color:#ff9f43">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">this</span>._state = State.OFF;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">// Metodi</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">void</span> On()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">this</span>._brightness = <span style="color:#ff9f43">100</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">this</span>._state = State.ON;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">void</span> Off()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">this</span>._brightness = <span style="color:#ff9f43">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">this</span>._state = State.OFF;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">// [...]</span>
+</span></span></code></pre></div></div>
+<div class='col '><p>Codice, pt. 2/2</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>    <span style="color:#78787e">// [...]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">void</span> Dim()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> (<span style="color:#ff6ac1">this</span>._brightness - <span style="color:#ff9f43">1</span> &lt; <span style="color:#ff9f43">0</span>)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">this</span>.Off();
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">return</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">this</span>._brightness--;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">void</span> Brighten()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> (<span style="color:#ff6ac1">this</span>._brightness + <span style="color:#ff9f43">1</span> &gt; <span style="color:#ff9f43">100</span>)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">this</span>.On();
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">return</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">this</span>._brightness++;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
 </div>
 </div>
 </section><section>
 <div class="container-fluid m-0 p-0">
     <div class='row '><div class='col '><h4 id="pov-progettista">POV: Progettista</h4>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#ff6ac1">namespace</span> BlaisePascal.OOPExamples.Domain;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">ComplexNumber</span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">int</span> Real { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">set</span>; }
-</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">int</span> Imaginary { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">set</span>; }
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> ComplexNumber(<span style="color:#9aedfe">int</span> re, <span style="color:#9aedfe">int</span> im)
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">this</span>.Real = re;
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">this</span>.Imaginary = im;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> ComplexNumber Add(ComplexNumber other)
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">new</span> ComplexNumber(
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">this</span>.Real + other.Real, 
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">this</span>.Imaginary + other.Imaginary
-</span></span><span style="display:flex;"><span>        );
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> ComplexNumber Subtract(ComplexNumber other)
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">this</span>.Add(<span style="color:#ff6ac1">new</span> ComplexNumber(
-</span></span><span style="display:flex;"><span>            -other.Real, 
-</span></span><span style="display:flex;"><span>            -other.Imaginary
-</span></span><span style="display:flex;"><span>        ));
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> ComplexNumber Multiply(ComplexNumber other)
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#78787e">// Formula: (a + ib)*(c * id) = (ac - bd) + (ad + bc)*i</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">int</span> a = <span style="color:#ff6ac1">this</span>.Real; <span style="color:#9aedfe">int</span> b = <span style="color:#ff6ac1">this</span>.Imaginary;
-</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">int</span> c = other.Real; <span style="color:#9aedfe">int</span> d = other.Imaginary;
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">new</span> ComplexNumber(a*c - b*d, a*d + b*c);
-</span></span><span style="display:flex;"><span>    } <span style="color:#78787e">// [...]</span>
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#ff6ac1">namespace</span> BlaisePascal.OOPExamples.Domain;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">ComplexNumber</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">int</span> Real { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">set</span>; }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">int</span> Imaginary { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">set</span>; }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>    <span style="color:#ff5c57">public</span> ComplexNumber(<span style="color:#9aedfe">int</span> re, <span style="color:#9aedfe">int</span> im)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>        <span style="color:#ff6ac1">this</span>.Real = re;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>        <span style="color:#ff6ac1">this</span>.Imaginary = im;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    <span style="color:#ff5c57">public</span> ComplexNumber Add(ComplexNumber other)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">new</span> ComplexNumber(
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>            <span style="color:#ff6ac1">this</span>.Real + other.Real, 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>            <span style="color:#ff6ac1">this</span>.Imaginary + other.Imaginary
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>        );
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>    <span style="color:#ff5c57">public</span> ComplexNumber Subtract(ComplexNumber other)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">this</span>.Add(<span style="color:#ff6ac1">new</span> ComplexNumber(
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>            -other.Real, 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>            -other.Imaginary
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>        ));
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span>    <span style="color:#ff5c57">public</span> ComplexNumber Multiply(ComplexNumber other)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span><span>        <span style="color:#78787e">// Formula: (a + ib)*(c * id) = (ac - bd) + (ad + bc)*i</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span><span>        <span style="color:#9aedfe">int</span> a = <span style="color:#ff6ac1">this</span>.Real; <span style="color:#9aedfe">int</span> b = <span style="color:#ff6ac1">this</span>.Imaginary;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34</span><span>        <span style="color:#9aedfe">int</span> c = other.Real; <span style="color:#9aedfe">int</span> d = other.Imaginary;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35</span><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">new</span> ComplexNumber(a*c - b*d, a*d + b*c);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36</span><span>    } <span style="color:#78787e">// [...]</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37</span><span>}
 </span></span></code></pre></div></div>
 <div class='col '><h4 id="pov-utilizzatore">POV: Utilizzatore</h4>
 <p>(Cosa vede chi utilizza la libreria)</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#ff6ac1">namespace</span> BlaisePascal.OOPExamples.Domain.UnitTests;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">ComplexNumberTest</span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span><span style="color:#57c7ff">    [Fact]</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">void</span> Constructor_SetsRealAndImaginary()
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#78787e">// Arrange</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> complex = <span style="color:#ff6ac1">new</span> ComplexNumber(<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#78787e">// Act &amp; Assert</span>
-</span></span><span style="display:flex;"><span>        Assert.Equal(<span style="color:#ff9f43">2</span>, complex.Real);
-</span></span><span style="display:flex;"><span>        Assert.Equal(<span style="color:#ff9f43">3</span>, complex.Imaginary);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span><span style="color:#57c7ff">
-</span></span></span><span style="display:flex;"><span><span style="color:#57c7ff">    [Fact]</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">void</span> Add_ReturnsSumOfRealAndImaginary()
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#78787e">// Arrange</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> c1 = <span style="color:#ff6ac1">new</span> ComplexNumber(<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> c2 = <span style="color:#ff6ac1">new</span> ComplexNumber(<span style="color:#ff9f43">3</span>, <span style="color:#ff9f43">4</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#78787e">// Act</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> result = c1.Add(c2);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#78787e">// Assert</span>
-</span></span><span style="display:flex;"><span>        Assert.Equal(<span style="color:#ff9f43">4</span>, result.Real);
-</span></span><span style="display:flex;"><span>        Assert.Equal(<span style="color:#ff9f43">6</span>, result.Imaginary);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span><span style="color:#57c7ff">
-</span></span></span><span style="display:flex;"><span><span style="color:#57c7ff">    [Fact]</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#78787e">// [...]</span>
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;display:grid;"><code class="nohighlight" data-noescape><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#ff6ac1">namespace</span> BlaisePascal.OOPExamples.Domain.UnitTests;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">ComplexNumberTest</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#57c7ff">    [Fact]</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">void</span> Constructor_SetsRealAndImaginary()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    {
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>        <span style="color:#78787e">// Arrange</span>
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>        <span style="color:#9aedfe">var</span> complex = <span style="color:#ff6ac1">new</span> ComplexNumber(<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>);
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>        <span style="color:#78787e">// Act &amp; Assert</span>
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>        Assert.Equal(<span style="color:#ff9f43">2</span>, complex.Real);
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>        Assert.Equal(<span style="color:#ff9f43">3</span>, complex.Imaginary);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span><span style="color:#57c7ff">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span><span style="color:#57c7ff">    [Fact]</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">void</span> Add_ReturnsSumOfRealAndImaginary()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>    {
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>        <span style="color:#78787e">// Arrange</span>
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>        <span style="color:#9aedfe">var</span> c1 = <span style="color:#ff6ac1">new</span> ComplexNumber(<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>);
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>        <span style="color:#9aedfe">var</span> c2 = <span style="color:#ff6ac1">new</span> ComplexNumber(<span style="color:#ff9f43">3</span>, <span style="color:#ff9f43">4</span>);
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>        <span style="color:#78787e">// Act</span>
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>        <span style="color:#9aedfe">var</span> result = c1.Add(c2);
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>        <span style="color:#78787e">// Assert</span>
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>        Assert.Equal(<span style="color:#ff9f43">4</span>, result.Real);
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>        Assert.Equal(<span style="color:#ff9f43">6</span>, result.Imaginary);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span><span style="color:#57c7ff">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span><span style="color:#57c7ff">    [Fact]</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span>    <span style="color:#78787e">// [...]</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span><span>}
 </span></span></code></pre></div></div>
+</div>
+</div>
+</section><section>
+<div class="container-fluid m-0 p-0">
+    <div class='row '><div class='col '><h4 id="pov-progettista">POV: Progettista</h4>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#ff6ac1">namespace</span> BlaisePascal.OOPExamples.Domain;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#ff5c57">enum</span> State { ON, OFF }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">Bulb</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    <span style="color:#78787e">// &#34;Memoria&#34; dell&#39;oggetto</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>    <span style="color:#9aedfe">int</span> _brightness;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>    State _state;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    <span style="color:#78787e">// Costruttore</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    <span style="color:#ff5c57">public</span> Bulb()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>        <span style="color:#ff6ac1">this</span>._brightness = <span style="color:#ff9f43">0</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>        <span style="color:#ff6ac1">this</span>._state = State.OFF;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>    <span style="color:#78787e">// Metodi</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">void</span> On()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>        <span style="color:#ff6ac1">this</span>._brightness = <span style="color:#ff9f43">100</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>        <span style="color:#ff6ac1">this</span>._state = State.ON;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">void</span> Off()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>        <span style="color:#ff6ac1">this</span>._brightness = <span style="color:#ff9f43">0</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>        <span style="color:#ff6ac1">this</span>._state = State.OFF;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span>    <span style="color:#78787e">// [...]</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span><span>}
+</span></span></code></pre></div></div>
+<div class='col '><h4 id="pov-utilizzatore">POV: Utilizzatore</h4>
+<p>(Cosa vede chi utilizza la libreria)</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;display:grid;"><code class="nohighlight" data-noescape><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#ff6ac1">namespace</span> BlaisePascal.OOPExamples.Presentation;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#ff6ac1">using</span> BlaisePascal.OOPExamples.Domain;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">UseBulb</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff5c57">static</span> <span style="color:#ff6ac1">void</span> Main(<span style="color:#9aedfe">string</span>[] args) 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>        Bulb newBulb = <span style="color:#ff6ac1">new</span> Bulb();
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>        Console.WriteLine(<span style="color:#5af78e">&#34;New bulb created!&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>        
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>        Console.WriteLine(
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>            <span style="color:#5af78e">&#34;Initial brightness: &#34;</span> + newBulb._brightness
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>        ); <span style="color:#78787e">// ERRORE!</span>
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>        Console.WriteLine(
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>            <span style="color:#5af78e">&#34;Initial state: &#34;</span> + newBulb._state
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>        ); <span style="color:#78787e">// ERRORE!</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>        <span style="color:#ff6ac1">for</span> (<span style="color:#9aedfe">int</span> i = <span style="color:#ff9f43">0</span>; i &lt; <span style="color:#ff9f43">3</span>; i++) 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>        {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>            newBulb.Brighten();
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>        }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>        <span style="color:#78787e">// Here, &#39;brightness&#39; should be equal to 3 - </span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>        <span style="color:#78787e">// we could use xunit to make a unit test </span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>        <span style="color:#78787e">// and assert that ;)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>        newBulb.On();
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>        <span style="color:#78787e">// [...]</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span>}
+</span></span></code></pre></div></div>
+</div>
+</div>
+</section><section>
+<h3 id="classe-vs-oggetto"><strong>Classe</strong> vs. <strong>Oggetto</strong></h3>
+<div class="container-fluid m-0 p-0">
+    <div class='row '><div class='col '><p><img src="imgs/clsvsobj.png" alt=""></p>
+</div>
+<div class='col '><img src="imgs/blueprint.png" class="w-75">
+</div>
 </div>
 </div>
 </section><section>
@@ -417,7 +554,7 @@ le <strong>operazioni fornite</strong>.</p>
 <p>Paradigma orientato al problem solving, prendendo le distanze da dettagli irrilevanti della macchina utilizzata.</p>
 </div>
 <div class='col '><h4 id="02-incapsulamento">02. Incapsulamento</h4>
-<p>Posso nascondere in una classe informazioni che non voglio rendere visibili all&rsquo;esterno.</p>
+<p>Posso (<em>io, <strong>progettista</strong></em>) nascondere in una classe informazioni che non voglio rendere visibili all&rsquo;esterno (<em>altri, <strong>utilizzatori</strong></em>).</p>
 </div>
 <div class='col '><h4 id="03-ereditarietà">03. Ereditarietà</h4>
 <p>Proprietà e metodi possono essere ereditati di classe in classe, sovrascritti oppure estesi.</p>
@@ -427,6 +564,636 @@ le <strong>operazioni fornite</strong>.</p>
 </div>
 </div>
 </div>
+
+</section>
+</section><section>
+
+
+<section data-shortcode-section>
+<h4 id="parte-03">Parte <strong>#03</strong></h4>
+<h2 id="oop---encapsulation"><strong>O</strong>.<strong>O</strong>.<strong>P</strong>. - encapsulation</h2>
+</section><section>
+<h3 id="clean-code--pt-1">CLEAN Code / pt. 1</h3>
+<div class="container-fluid m-0 p-0">
+    <div class='row '><div class='col '><h4 id="layout">Layout</h4>
+<ul>
+<li>indentazione di 2-4 caratteri</li>
+<li>linee non più lunghe di 90 caratteri (spezzare in maniera coerente)</li>
+</ul>
+</div>
+<div class='col '><h4 id="commenti">Commenti</h4>
+<ul>
+<li>&ldquo;<code>// ...</code>&rdquo; commento su una linea</li>
+<li>&ldquo;<code>/* ... */</code>&rdquo; commento su più linee - utilizzato per commentare sezioni interne del codice</li>
+<li>&ldquo;<code>/// &lt;summary&gt; ... &lt;/summary&gt;</code>&rdquo; commenti di documentazione, da posizionare sopra classi e membri <strong>pubblici</strong> del codice
+<ul>
+<li>servono per generare documentazione!</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<h4 id="istruzioni">Istruzioni</h4>
+<ul>
+<li>una istruzione per riga</li>
+<li>inizializzare sempre le variabili!</li>
+<li>una definizione di variabile per riga - non fare <code>int x, y, z;</code> !</li>
+</ul>
+</section><section>
+<h3 id="clean-code--pt-2">CLEAN Code / pt. 2</h3>
+<div class="container-fluid m-0 p-0">
+    <div class='row '><div class='col '><h4 id="ordine-delle-proprietà-di-una-classe">Ordine delle proprietà di una classe</h4>
+<ol>
+<li><strong>campi statici</strong> (pubblici, poi privati)</li>
+<li><strong>campi d&rsquo;istanza</strong> (pubblici, poi privati) - proprietà</li>
+<li><strong>costruttori</strong> (pubblici, poi privati)</li>
+<li><strong>metodi</strong> (raggruppati per ruolo)</li>
+</ol>
+</div>
+<div class='col '><h4 id="nomi">Nomi</h4>
+<ul>
+<li><strong>Classi, Namespace, Metodi</strong>: PascalCase
+<ul>
+<li>&ldquo;<code>Tree</code>&rdquo;, &ldquo;<code>Graph</code>&rdquo;, &ldquo;<code>Car</code>&rdquo;, &ldquo;<code>Person</code>&rdquo;&hellip;</li>
+</ul>
+</li>
+<li><strong>Interfacce</strong>: PascalCase + &ldquo;I&rdquo; maiuscola iniziale
+<ul>
+<li>&ldquo;<code>IEquatable&lt;&gt;</code>&rdquo;, &ldquo;<code>IComparer</code>&rdquo;, &ldquo;<code>ICollection</code>&rdquo;&hellip;</li>
+</ul>
+</li>
+<li><strong>Costanti</strong>: tutte maiuscole, parole separate da &ldquo;_&rdquo;</li>
+</ul>
+</div>
+</div>
+</div>
+</section><section>
+<h3 id="esempio-point3d--1">Esempio: <code>Point3D</code> / 1</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#ff6ac1">namespace</span> BlaisePascal.OOPExamples.Domain;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e">/// Point3D is an example showcasing some functionality of OO in C#, focussing</span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e">/// on formatting. All properties have default - private - access.</span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">Point3D</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">static</span> <span style="color:#ff6ac1">readonly</span> Point3D ZERO = <span style="color:#ff6ac1">new</span> Point3D(<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e">        A Point3D is made of three fields and has some manipulation functions.
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e">    */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#9aedfe">double</span> _x;
+</span></span><span style="display:flex;"><span>    <span style="color:#9aedfe">double</span> _y;
+</span></span><span style="display:flex;"><span>    <span style="color:#9aedfe">double</span> _z;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">/// Constructor of Point3D class.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> Point3D(<span style="color:#9aedfe">double</span> x, <span style="color:#9aedfe">double</span> y, <span style="color:#9aedfe">double</span> z)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">this</span>._x = x;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">this</span>._y = y;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">this</span>._z = z;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">// [...]</span>
+</span></span></code></pre></div></section><section>
+<h3 id="esempio-point3d--2">Esempio: <code>Point3D</code> / 2</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>    <span style="color:#78787e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">/// Calculates the squared module of the point, i.e. (x**2) + (y**2) + (z**2).</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">double</span> GetSquareModule()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">this</span>._x * <span style="color:#ff6ac1">this</span>._x + <span style="color:#ff6ac1">this</span>._y * <span style="color:#ff6ac1">this</span>._y + <span style="color:#ff6ac1">this</span>._z * <span style="color:#ff6ac1">this</span>._z;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">/// Apply translation to point in three axes.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">void</span> Translate(<span style="color:#9aedfe">double</span> x, <span style="color:#9aedfe">double</span> y, <span style="color:#9aedfe">double</span> z)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">this</span>._x += x;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">this</span>._y += y;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">this</span>._z += z;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">/// Static method to calculate the point with maximum squared module.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff5c57">static</span> Point3D Max(Point3D[] points)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> max = ZERO;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">foreach</span> (<span style="color:#9aedfe">var</span> point <span style="color:#ff6ac1">in</span> points)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">if</span> (point.GetSquareModule() &gt; ZERO.GetSquareModule())
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                max = point;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> max;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>} 
+</span></span></code></pre></div></section><section>
+<h3 id="princìpio-di-decomposizione-divide-et-impera">Princìpio di decomposizione: <strong>Divide et impera</strong></h3>
+<blockquote>
+<p>&ldquo;<em>Dividi e conquista</em>&rdquo;, approccio <strong>top-down</strong>.</p>
+</blockquote>
+<br>
+<blockquote>
+<p>la <strong>soluzione</strong> di un <strong>problema complesso</strong> avviene <strong>dividendolo</strong> in problemi più <strong>semplici</strong>, tra loro <strong>indipendenti</strong>.</p>
+</blockquote>
+<h4 id="esempi">Esempi</h4>
+<ul>
+<li>&ldquo;Devo sviluppare una <em>calcolatrice con GUI</em>&rdquo;
+<ul>
+<li><strong>GUI</strong> + <strong>gestione eventi</strong> + <strong>calcoli matematici</strong></li>
+</ul>
+</li>
+<li>&ldquo;Devo sviluppare un <em>ecommerce di elettrodomestici</em>&rdquo;
+<ul>
+<li><strong>Carrello</strong> + <strong>Ordini</strong> + <strong>Pagamenti</strong> + <strong>DB Articoli</strong> + &hellip;</li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h3 id="decomposizione-e-modularità"><strong>Decomposizione e modularità</strong></h3>
+<ul>
+<li>i sottoproblemi devono essere <strong>isolati</strong>, <strong>indipendenti</strong>!</li>
+</ul>
+<h4 id="3-livelli-di-decomposizione">3 livelli di decomposizione</h4>
+<ol>
+<li>
+<p>suddivisione in <strong>namespace</strong> (<em>simili</em> ai package di altri linguaggi, tipo Java o Kotlin)</p>
+</li>
+<li>
+<p>suddivisione in <strong>classi</strong> (all&rsquo;interno di un namespace)</p>
+</li>
+<li>
+<p>suddivisione in <strong>metodi</strong> (all&rsquo;interno di una classe)</p>
+</li>
+</ol>
+</section><section>
+<h3 id="semplice-esempio-di-incapsulamento-classe-counter">Semplice esempio di incapsulamento: classe <code>Counter</code></h3>
+<div class="container-fluid m-0 p-0">
+    <div class='row '><div class='col '><h4 id="pov-progettista">POV: Progettista</h4>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">Counter</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">// Utilizzo property: sintetizza in una riga</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">// - dichiarazione di un field</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">// - dichiarazione di un get pubblico default</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">// - dichiarazione di un set privato </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">int</span> Count { <span style="color:#ff6ac1">get</span>; <span style="color:#ff5c57">private</span> <span style="color:#ff6ac1">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> Counter()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">this</span>.Count = <span style="color:#ff9f43">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">void</span> Increment()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">this</span>.Count += <span style="color:#ff9f43">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
+<div class='col '><h4 id="pov-utilizzatore-console">POV: Utilizzatore (Console)</h4>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#ff6ac1">namespace</span> BlaisePascal.OOPExamples.Presentation;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">using</span> BlaisePascal.OOPExamples.Domain;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">Program</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff5c57">static</span> <span style="color:#ff6ac1">void</span> UseCounter(Counter counter)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">int</span> incrementTimes = <span style="color:#ff9f43">4</span>;
+</span></span><span style="display:flex;"><span>        Console.WriteLine(counter.Count); <span style="color:#78787e">// Should be &#34;0&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">for</span> (<span style="color:#9aedfe">int</span> i = <span style="color:#ff9f43">0</span>; i &lt; incrementTimes; i++)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            counter.Increment(); <span style="color:#78787e">// +1 x 4</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        Console.WriteLine(counter.Count); <span style="color:#78787e">// Should be &#34;4&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff5c57">static</span> <span style="color:#ff6ac1">void</span> Main(<span style="color:#9aedfe">string</span>[] args)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> myCounter = <span style="color:#ff6ac1">new</span> Counter();
+</span></span><span style="display:flex;"><span>        UseCounter(myCounter);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
+</div>
+</div>
+</section><section>
+<h4 id="pov-utilizzatore-xunit--1">POV: Utilizzatore (<strong>xUnit</strong>) / 1</h4>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">CounterTest</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">private</span> <span style="color:#ff5c57">static</span> <span style="color:#ff6ac1">void</span> CountInArray(<span style="color:#9aedfe">int</span>[] array, <span style="color:#9aedfe">int</span> target, Counter counter)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">foreach</span> (<span style="color:#9aedfe">var</span> item <span style="color:#ff6ac1">in</span> array) 
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">if</span> (item == target)
+</span></span><span style="display:flex;"><span>            {    
+</span></span><span style="display:flex;"><span>                counter.Increment();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="color:#57c7ff">    
+</span></span></span><span style="display:flex;"><span><span style="color:#57c7ff">    [Fact]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">void</span> Increment_ShouldIncrementCountValueWhenCalledOnArrayCount()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e">// Arrange</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> counter = <span style="color:#ff6ac1">new</span> Counter();
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> sampleArray = <span style="color:#ff6ac1">new</span> <span style="color:#9aedfe">int</span>[] { <span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">30</span>, <span style="color:#ff9f43">75</span>, <span style="color:#ff9f43">40</span> }; 
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> target = <span style="color:#ff9f43">10</span>; 
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> want = <span style="color:#ff9f43">2</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e">// Act</span>
+</span></span><span style="display:flex;"><span>        CountInArray(sampleArray, target, counter);
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> have = counter.Count;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e">// Assert</span>
+</span></span><span style="display:flex;"><span>        Assert.Equal(want, have);
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div></section><section>
+<h4 id="pov-utilizzatore-xunit--2">POV: Utilizzatore (<strong>xUnit</strong>) / 2</h4>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#57c7ff">    [Fact]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">void</span> Increment_ShouldIncrementCountValueWhenCalledOnMatrixCount()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e">// Arrange</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> counter = <span style="color:#ff6ac1">new</span> Counter();
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> sampleMatrix = <span style="color:#ff6ac1">new</span> <span style="color:#9aedfe">int</span>[][] {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">new</span> <span style="color:#9aedfe">int</span>[] { <span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">80</span>, <span style="color:#ff9f43">90</span> },
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">new</span> <span style="color:#9aedfe">int</span>[] { <span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">65</span> },
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">new</span> <span style="color:#9aedfe">int</span>[] { <span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">20</span>, <span style="color:#ff9f43">10</span> },
+</span></span><span style="display:flex;"><span>        }; 
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> target = <span style="color:#ff9f43">10</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> want = <span style="color:#ff9f43">5</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e">// Act</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">foreach</span> (<span style="color:#9aedfe">var</span> array <span style="color:#ff6ac1">in</span> sampleMatrix)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            CountInArray(array, target, counter);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">var</span> have = counter.Count;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e">// Assert</span>
+</span></span><span style="display:flex;"><span>        Assert.Equal(want, have);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></section><section>
+<h3 id="qualche-osservazione">Qualche osservazione</h3>
+<ul>
+<li>La struttura di <code>Counter</code> mi impedisce di modificare accidentalmente il valore di <code>Count</code>!
+<ul>
+<li>posso solo <strong>creare</strong> un counter (che parte da 0) e farlo <strong>avanzare</strong> con uno step di 1.</li>
+<li>l&rsquo;informazione di <code>Count</code> è incapsulata dentro alla classe, che è l&rsquo;unica che ha possibilità di modifica (utilizzando il modificatore di accessibilità <code>private</code>)</li>
+</ul>
+</li>
+<li>Il codice risultante è più astratto (più di &ldquo;alto livello&rdquo;): è più intuitivo leggere &ldquo;<code>Count += 1</code>&rdquo; oppure &ldquo;<code>counter.increment()</code>&rdquo;?
+<ul>
+<li>qualora dovessi cambiare lo step di incremento, dovrei farlo solo all&rsquo;interno del metodo <code>increment</code> e non altrove.</li>
+</ul>
+</li>
+<li>La scelta di implementare tale classe Counter mi rende il codice riutilizzabile in diversi contesti (come nei test <code>...OnArrayCount()</code> e <code>...OnMatrixCount()</code>)</li>
+</ul>
+</section><section>
+<h3 id="progettazione-e-implementazione-le-fasi">Progettazione e implementazione: le fasi</h3>
+<ol>
+<li>Progettazione della <strong>parte pubblica</strong> della classe</li>
+<li>Costruzione dello stato</li>
+<li>Completamento implementazione</li>
+<li>Miglioramento codice finale</li>
+<li>Test del risultato</li>
+</ol>
+</section><section>
+<h3 id="proviamo">Proviamo</h3>
+<div class="container-fluid m-0 p-0">
+    <div class='row '><div class='col '><h3 id="e00">E#00</h3>
+<p><code>Calculator</code></p>
+</div>
+<div class='col '><h3 id="e01">E#01</h3>
+<p><code>Circle</code>, <code>Square</code>, <code>Triangle</code></p>
+</div>
+<div class='col '><h3 id="e02">E#02</h3>
+<p><code>Student</code>, <code>Professor</code>, <code>Class</code></p>
+</div>
+</div>
+</div>
+
+</section>
+</section><section>
+
+
+<section data-shortcode-section>
+<h4 id="parte-04">Parte <strong>#04</strong></h4>
+<h2 id="costruttori">Costruttori</h2>
+<p>// TODO</p>
+
+</section>
+</section><section>
+
+
+<section data-shortcode-section>
+<h4 id="parte-05">Parte <strong>#05</strong></h4>
+<h2 id="interfacce--classi-astratte">Interfacce &amp; classi astratte</h2>
+<ul>
+<li><code>virtual</code>/<code>override</code>, upcasting, downcasting</li>
+</ul>
+</section><section>
+<h3 id="problema">PROBLEMA</h3>
+<div class="container-fluid m-0 p-0">
+    <div class='row '><div class='col '><h4 id="problem-space">PROBLEM SPACE</h4>
+<p>Si progetti in C# un software per il calcolo delle retribuzioni mensili di un&rsquo;azienda per ciascun impiegato. Ciascun impiegato ha un ID, un nome, un cognome e un dipartimento di afferenza (Human Resources, Accountability, Management&hellip;)</p>
+</div>
+<div class='col '><p>Sono previsti diversi tipi di impiegati:</p>
+<ol>
+<li><strong>A paga oraria</strong> (retribuzione: ore lavorate $\times$ paga oraria, con maggiorazione del $ 150 \% $ della paga per gli straordinari)</li>
+<li><strong>Con salario mensile</strong> (retribuzione: fissa ogni mese, indipendentemente dall&rsquo;orario di lavoro)</li>
+<li><strong>Con salario mensile e commissioni</strong> (retribuzione: fissa ogni mese + vendita (lorda) $\times$ tasso di commissione)</li>
+<li><strong>Manager</strong> (retribuzione: salario mensile + (bonus $\times$ percentuale di completamento obiettivi))</li>
+<li><strong>Executive</strong> (retribuzione: base di un manager + equità di bonus, calcolata come quote di mercato $\times$ prezzo delle quote)</li>
+</ol>
+</div>
+</div>
+</div>
+</section><section>
+<h3 id="una-prima---terrificante---soluzione--1">Una prima - <strong>terrificante</strong> - soluzione / 1</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#ff6ac1">namespace</span> BlaisePascal.OOPExamples.Domain.SalaryCalculator.NOInheritance;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff5c57">enum</span> EmployeeType { Hourly, Salaried, CommissionSalaried, Manager, Executive }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">EmployeeRecord</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">int</span> Id { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">string</span> FullName { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; } = <span style="color:#9aedfe">string</span>.Empty;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">string</span> Department { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; } = <span style="color:#9aedfe">string</span>.Empty;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> EmployeeType Type { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">// Campi specifici orari</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">decimal</span> HourlyRate { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">double</span> HoursWorked { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">// Campi specifici stipendiati / manager</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">decimal</span> MonthlySalary { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">// Campi specifici commerciali</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">decimal</span> GrossSales { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">set</span>; }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">decimal</span> CommissionRate { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">// Campi specifici manager</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">decimal</span> TargetBonus { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">double</span> ObjectiveCompletionRate { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">// Campi specifici executive</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">int</span> StockSharesGranted { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">decimal</span> ShareMarketPrice { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">// [...]</span>
+</span></span></code></pre></div></section><section>
+<h3 id="una-prima---terrificante---soluzione--2">Una prima - <strong>terrificante</strong> - soluzione / 2</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>    <span style="color:#78787e">// [...]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">decimal</span> CalculatePay()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">switch</span> (Type)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">case</span> EmployeeType.Hourly:
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">if</span> (HoursWorked &lt;= <span style="color:#ff9f43">160.0</span>)
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff6ac1">return</span> (<span style="color:#9aedfe">decimal</span>)HoursWorked * HourlyRate;
+</span></span><span style="display:flex;"><span>                <span style="color:#9aedfe">decimal</span> baseHoursPay = <span style="color:#ff9f43">160.0</span>m * HourlyRate;
+</span></span><span style="display:flex;"><span>                <span style="color:#9aedfe">decimal</span> overtimePay = (<span style="color:#9aedfe">decimal</span>)(HoursWorked - <span style="color:#ff9f43">160.0</span>) * (HourlyRate * <span style="color:#ff9f43">1.5</span>m);
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">return</span> baseHoursPay + overtimePay;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">case</span> EmployeeType.Salaried:
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">return</span> MonthlySalary;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">case</span> EmployeeType.CommissionSalaried:
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">return</span> MonthlySalary + (GrossSales * CommissionRate);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">case</span> EmployeeType.Manager:
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">return</span> MonthlySalary + (TargetBonus * (<span style="color:#9aedfe">decimal</span>)ObjectiveCompletionRate);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">case</span> EmployeeType.Executive:
+</span></span><span style="display:flex;"><span>                <span style="color:#9aedfe">decimal</span> managerPart = MonthlySalary + (TargetBonus * (<span style="color:#9aedfe">decimal</span>)ObjectiveCompletionRate);
+</span></span><span style="display:flex;"><span>                <span style="color:#9aedfe">decimal</span> equityPart = StockSharesGranted * ShareMarketPrice;
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">return</span> managerPart + equityPart;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">default</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">throw</span> <span style="color:#ff6ac1">new</span> InvalidOperationException(<span style="color:#5af78e">&#34;Tipo non supportato.&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">// [...]</span>
+</span></span></code></pre></div></section><section>
+<h3 id="una-prima---terrificante---soluzione--3">Una prima - <strong>terrificante</strong> - soluzione / 3</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>    <span style="color:#78787e">// [...]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">string</span> GetDetails()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#9aedfe">string</span> header = <span style="color:#5af78e">$&#34;[{Id}] {FullName} - Dip. {Department}&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">switch</span> (Type)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">case</span> EmployeeType.Hourly:
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">return</span> <span style="color:#5af78e">$&#34;{header} | Orario ({HoursWorked}h a {HourlyRate:C}/h)&#34;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">case</span> EmployeeType.Salaried:
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">return</span> <span style="color:#5af78e">$&#34;{header} | Fisso: {MonthlySalary:C}&#34;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">case</span> EmployeeType.CommissionSalaried:
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">return</span> <span style="color:#5af78e">$&#34;{header} | Fisso: {MonthlySalary:C} + Provvigione ({CommissionRate:P0} su {GrossSales:C})&#34;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">case</span> EmployeeType.Manager:
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">return</span> <span style="color:#5af78e">$&#34;{header} | Fisso: {MonthlySalary:C} + Bonus ({TargetBonus:C} al {ObjectiveCompletionRate:P0})&#34;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">case</span> EmployeeType.Executive:
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">return</span> <span style="color:#5af78e">$&#34;{header} | Fisso: {MonthlySalary:C} + Bonus ({TargetBonus:C} al {ObjectiveCompletionRate:P0}) + Equity: {StockSharesGranted} az. ({ShareMarketPrice:C})&#34;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">default</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">return</span> header;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div></section><section>
+<p>Due grossi problemi:</p>
+<ul>
+<li>classe <strong>monolitica</strong>
+<ul>
+<li>vìolato <strong>OCP</strong> - <strong>O</strong>pen-<strong>C</strong>losed <strong>P</strong>rinciple</li>
+</ul>
+</li>
+<li>logica <strong>ripetuta</strong>
+<ul>
+<li>vìolato <strong>DRY</strong> - <strong>D</strong>on&rsquo;t <strong>R</strong>epeat <strong>Y</strong>ourself</li>
+</ul>
+</li>
+</ul>
+<br>
+<br>
+<blockquote>
+<p>Non stiamo usando i princìpi fondamentali della OOP!</p>
+</blockquote>
+</section><section>
+<h3 id="idea--1">Idea / 1</h3>
+<div class="callout success">
+    <div class="callout-background py-4 px-5"><div class="callout-content"><p>Osserviamo che, per ciascun dipendente, si presentano delle caratteristiche comuni:</p>
+<ul>
+<li>ID</li>
+<li>FullName</li>
+<li>Department</li>
+</ul>
+</div></div>
+</div>
+<br>
+<div class="callout warning">
+    <div class="callout-background py-4 px-5"><div class="callout-content"><p>Ciascun dipendente, inoltre, ha una funzionalità <code>CalculateMonthlyPay()</code> - la cui implementazione cambia a seconda del tipo di dipendente.</p>
+</div></div>
+</div>
+</section><section>
+<h3 id="idea--2">Idea / 2</h3>
+<p>Potremmo quindi pensare di creare una <strong>classe padre</strong> <code>Employee</code> che raccolga le caratteristiche a fattor comune, ma che lasci la libertà a ciascuna <strong>specializzazione</strong> di calcolare lo stipendio secondo le sue modalità.</p>
+</section><section>
+<h3 id="una-soluzione-migliore--1">Una soluzione <strong>migliore</strong> / 1</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;display:grid;"><code class="nohighlight" data-noescape><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#ff6ac1">namespace</span> BlaisePascal.OOPExamples.Domain.SalaryCalculator.WithInheritance;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#ff5c57">public</span> <span style="color:#ff5c57">abstract</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">Employee</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">int</span> Id { <span style="color:#ff6ac1">get</span>; <span style="color:#ff5c57">private</span> <span style="color:#ff6ac1">set</span> }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">string</span> FullName { <span style="color:#ff6ac1">get</span>; <span style="color:#ff5c57">private</span> <span style="color:#ff6ac1">set</span> }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">string</span> Department { <span style="color:#ff6ac1">get</span>; <span style="color:#ff5c57">private</span> <span style="color:#ff6ac1">set</span> }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>    <span style="color:#ff5c57">protected</span> Employee(<span style="color:#9aedfe">int</span> id, <span style="color:#9aedfe">string</span> fullName, <span style="color:#9aedfe">string</span> department)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>        Id = id;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>        FullName = fullName;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>        Department = department;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>    <span style="color:#78787e">// Contratto: ogni sottoclasse concreta deve implementare la formula</span>
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff5c57">abstract</span> <span style="color:#9aedfe">decimal</span> CalculateMonthlyPay();
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>    <span style="color:#78787e">// Metodo estendibile: fornisce l&#39;intestazione comune</span>
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">virtual</span> <span style="color:#9aedfe">string</span> GetEmploymentDetails() 
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>    {
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>        <span style="color:#ff6ac1">return</span> <span style="color:#5af78e">$&#34;[{Id}] {FullName} - Dip. {Department}&#34;</span>;
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>}
+</span></span></code></pre></div></section><section>
+<h3 id="una-soluzione-migliore--2">Una soluzione <strong>migliore</strong> / 2</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;display:grid;"><code class="nohighlight" data-noescape><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#ff6ac1">namespace</span> BlaisePascal.OOPExamples.Domain.SalaryCalculator.WithInheritance;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">HourlyEmployee</span> : Employee
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>    <span style="color:#ff5c57">private</span> <span style="color:#ff6ac1">readonly</span> <span style="color:#9aedfe">decimal</span> EXTRA = <span style="color:#ff9f43">1.5</span>m;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">decimal</span> HourlyRate { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">double</span> HoursWorked { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">set</span>; }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>    <span style="color:#ff5c57">public</span> HourlyEmployee(<span style="color:#9aedfe">int</span> id, <span style="color:#9aedfe">string</span> fullName, <span style="color:#9aedfe">string</span> department, <span style="color:#9aedfe">decimal</span> hourlyRate, <span style="color:#9aedfe">double</span> hoursWorked)
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>        : <span style="color:#ff6ac1">base</span>(id, fullName, department)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>        HourlyRate = hourlyRate;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>        HoursWorked = hoursWorked;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff5c57">override</span> <span style="color:#9aedfe">decimal</span> CalculateMonthlyPay()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>    {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>        <span style="color:#ff5c57">const</span> <span style="color:#9aedfe">double</span> standardHours = <span style="color:#ff9f43">160.0</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>        <span style="color:#ff6ac1">if</span> (HoursWorked &lt;= standardHours)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>            <span style="color:#ff6ac1">return</span> (<span style="color:#9aedfe">decimal</span>)HoursWorked * HourlyRate;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>        <span style="color:#9aedfe">decimal</span> standardPay = <span style="color:#ff9f43">160.0</span>m * HourlyRate;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>        <span style="color:#9aedfe">decimal</span> overtimePay = (<span style="color:#9aedfe">decimal</span>)(HoursWorked - standardHours) * (HourlyRate * EXTRA);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>        <span style="color:#ff6ac1">return</span> standardPay + overtimePay;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>
+</span></span><span style="display:flex; background-color:#3d3f4a"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff5c57">override</span> <span style="color:#9aedfe">string</span> GetEmploymentDetails() =&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>        <span style="color:#5af78e">$&#34;{base.GetEmploymentDetails()} | Orario ({HoursWorked}h a {HourlyRate:C}/h)&#34;</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span>}
+</span></span></code></pre></div></section><section>
+<h3 id="una-soluzione-migliore--3">Una soluzione <strong>migliore</strong> / 3</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#ff6ac1">namespace</span> BlaisePascal.OOPExamples.Domain.SalaryCalculator.WithInheritance;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">SalariedEmployee</span> : Employee
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#9aedfe">decimal</span> MonthlySalary { <span style="color:#ff6ac1">get</span>; <span style="color:#ff6ac1">init</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> SalariedEmployee(<span style="color:#9aedfe">int</span> id, <span style="color:#9aedfe">string</span> fullName, <span style="color:#9aedfe">string</span> department, <span style="color:#9aedfe">decimal</span> monthlySalary)
+</span></span><span style="display:flex;"><span>        : <span style="color:#ff6ac1">base</span>(id, fullName, department)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        MonthlySalary = monthlySalary;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff5c57">override</span> <span style="color:#9aedfe">decimal</span> CalculateMonthlyPay() =&gt; MonthlySalary;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">public</span> <span style="color:#ff5c57">override</span> <span style="color:#9aedfe">string</span> GetEmploymentDetails() =&gt;
+</span></span><span style="display:flex;"><span>        <span style="color:#5af78e">$&#34;{base.GetEmploymentDetails()} | Fisso: {MonthlySalary:C}&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><br>
+<p>// ESERCIZIO: Continuare l&rsquo;implementazione seguendo il tracciato.</p>
+</section><section>
+<h3 id="la-soluzione-usa-una-classe-astratta">La soluzione usa una <strong>classe astratta</strong></h3>
+<p>Con la parola chiave <code>abstract</code> si può contrassegnare una classe in cui <strong>non tutto è implementato</strong></p>
+<ul>
+<li>le classi che ereditano i metodi <code>abstract</code> DEVONO fornire una loro implementazione, mediante l&rsquo;uso di <code>override</code>.</li>
+</ul>
+<br>
+<br>
+<div class="callout note">
+    <div class="callout-background py-4 px-5"><div class="callout-content"><p>E cosa vuol dire <code>virtual</code>?</p>
+<ul>
+<li>si può usare sia nelle classi astratte che in quelle base, indica un metodo fornito di implementazione che <strong>può</strong> essere sovrascritta dalle classe figlie (utilizzando sempre la parola chiave <code>override</code>).</li>
+</ul>
+</div></div>
+</div>
+</section><section>
+<h3 id="interfaccia--1">Interfaccia / 1</h3>
+<ul>
+<li>Serve un meccanismo per separare esplicitamente, ossia in dichiarazioni
+diverse, l’<strong>interfaccia della classe</strong> e la sua <strong>realizzazione</strong>
+<ul>
+<li>Questo consente di tenere separate fisicamente la parte di “contratto”
+(<em>tipicamente fissa</em>) con quella di “implementazione” (<em>modificabile
+frequentemente</em>)</li>
+</ul>
+</li>
+<li>Consente di separare bene “<strong>abstraction</strong>” e “<strong>concretion</strong>&quot;</li>
+</ul>
+</section><section>
+<h3 id="interfaccia--2">Interfaccia / 2</h3>
+<ul>
+<li>Contiene solo e soltanto le <strong>firme</strong> dei metodi della mia entità.
+<ul>
+<li><strong>Firma = tipo di ritorno + nome + parametri</strong> (p.e. <code>int CalculateAge(Date birthday);</code>)</li>
+</ul>
+</li>
+<li>Con un&rsquo;interfaccia si crea un nuovo tipo di dato (come per le classi, classi astratte, <code>int</code>, <code>bool</code>, <code>string</code>, ecc&hellip;)
+<ul>
+<li>Posso chiamare solo e soltanto i metodi dichiarati nell&rsquo;interfaccia</li>
+<li>Una variabile dichiarata di tipo interfaccia assume solo per valori le <strong>istanze delle classi che implementano l&rsquo;interfaccia</strong>.</li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h3 id="come-realizzare-domuscontroller-con-riutilizzo-del-codice">Come realizzare <code>DomusController</code> con riutilizzo del codice?</h3>
+<p><img src="imgs/domuscontroller.png" alt=""></p>
+
+</section>
+</section><section>
+
+
+<section data-shortcode-section>
+<h4 id="parte-xx">Parte <strong>#XX</strong></h4>
+<h2 id="advanced-oop">Advanced O.O.P.</h2>
+<p>// TODO</p>
+</section><section>
+<ul>
+<li><code>Object.Equals()</code></li>
+<li>Override degli operatori</li>
+<li>Extension methods</li>
+<li>Delegati, lambda expressions</li>
+<li>Interfacce base del .NET — <code>IEquatable&lt;T&gt;</code>, <code>IComparer</code></li>
+<li>Generics</li>
+</ul>
+
+</section>
+</section><section>
+
+
+<section data-shortcode-section>
+<h2 id="c-systemlinq">C# System.<strong>Linq</strong></h2>
+<p><strong>L</strong>anguage-<strong>IN</strong>tegrated <strong>Q</strong>uery</p>
+<p>// TODO</p>
 
 </section>
 </section>
