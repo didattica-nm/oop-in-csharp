@@ -180,7 +180,7 @@ Attenzione alla **syntactic sugar**!
 #### SOLUZIONE
 - **Raccoglitore** di progetti
 - Gestisce le dipendenze dei vari progetti e le loro varie configurazioni 
-- Estensione `.sln`
+- Estensione `.sln` (o `.slnx`)
 {{% /callout %}}
 
 {{% /col %}}
@@ -315,9 +315,10 @@ Esempio del contenuto di un **file progetto** (`.csproj`)
 
 <br>
 
-- Col tempo ci si è accorti che, con la crescente **potenza computazionale** dei calcolatori e la crescente **potenzialità** dei problemi risolvibili da essi, si doveva avere la possibilità di codificare la soluzione di un dato problema in un linguaggio che "trascurasse" i dettagli di **basso livello** della macchina che la eseguiva.
+- **Machine Lang / Assembly / C** portano ad una visione molto hardware-oriented di un problema
+  - gestione di memoria manuale, difficoltà di gestione degli aspetti specifici di un hardware, difficoltà a comprendere/gestire codice scritto da altri...
 
-- Modellazione delle **entità** che costituiscono un dominio applicativo, e delle varie **relazioni** tra di loro - minimizzando la gestione di aspetti non inerenti alla risoluzione del problema.
+- Nel tempo nasce la necessità di modellare le **entità** che costituiscono un dominio applicativo, e delle varie **relazioni** tra di loro - minimizzando le risorse (*tempo, fatica...*) dedicate alla gestione di aspetti non inerenti alla risoluzione del problema.
 <br>
 <br>
     
@@ -350,21 +351,86 @@ le **operazioni fornite**.
 
 ---
 
-### Qualche esempio
+### La classe **Lampadina**
 
 {{% multicol %}}
 {{% col %}}
-### E#00 
-`ComplexNumber`
+
+Rappresentazione **UML**
+<small>
+  **U**nified **M**odelling **L**anguage
+</small>
+![](imgs/bulb.png)
 {{% /col %}}
+
 {{% col %}}
-### E#01 
-`Circle`, `Square`, `Triangle`
+
+Codice, pt. 1/2
+```csharp
+namespace BlaisePascal.OOPExamples.Domain;
+
+enum State { ON, OFF }
+
+public class Bulb
+{
+    // "Memoria" dell'oggetto
+    int _brightness;
+    State _state;
+
+    // Costruttore
+    public Bulb()
+    {
+        this._brightness = 0;
+        this._state = State.OFF;
+    }
+
+    // Metodi
+    public void On()
+    {
+        this._brightness = 100;
+        this._state = State.ON;
+    }
+
+    public void Off()
+    {
+        this._brightness = 0;
+        this._state = State.OFF;
+    }
+    
+    // [...]
+```
 {{% /col %}}
+
 {{% col %}}
-### E#02  
-`Student`, `Professor`, `Class`
+
+Codice, pt. 2/2
+```csharp 
+    // [...]
+
+    public void Dim()
+    {
+        if (this._brightness - 1 < 0)
+        {
+            this.Off();
+            return;
+        }
+        this._brightness--;
+    }
+
+    public void Brighten()
+    {
+        if (this._brightness + 1 > 100)
+        {
+            this.On();
+            return;
+        }
+        this._brightness++;
+    }
+}
+```
 {{% /col %}}
+
+
 {{% /multicol %}}
 
 ---
@@ -373,7 +439,7 @@ le **operazioni fornite**.
 {{% col %}}
 
 #### POV: Progettista
-```csharp
+```csharp {linenos=inline}
 namespace BlaisePascal.OOPExamples.Domain;
 
 public class ComplexNumber
@@ -416,7 +482,7 @@ public class ComplexNumber
 {{% col %}}
 #### POV: Utilizzatore
 (Cosa vede chi utilizza la libreria)
-```csharp
+```csharp { linenos=inline hl_lines=["8-12", "18-27"] }
 namespace BlaisePascal.OOPExamples.Domain.UnitTests;
 
 public class ComplexNumberTest
@@ -455,6 +521,100 @@ public class ComplexNumberTest
 
 ---
 
+{{% multicol %}}
+{{% col %}}
+
+#### POV: Progettista
+```csharp {linenos=inline}
+namespace BlaisePascal.OOPExamples.Domain;
+
+enum State { ON, OFF }
+
+public class Bulb
+{
+    // "Memoria" dell'oggetto
+    int _brightness;
+    State _state;
+
+    // Costruttore
+    public Bulb()
+    {
+        this._brightness = 0;
+        this._state = State.OFF;
+    }
+
+    // Metodi
+    public void On()
+    {
+        this._brightness = 100;
+        this._state = State.ON;
+    }
+
+    public void Off()
+    {
+        this._brightness = 0;
+        this._state = State.OFF;
+    }
+    
+    // [...]
+}
+```
+{{% /col %}}
+{{% col %}}
+#### POV: Utilizzatore
+(Cosa vede chi utilizza la libreria)
+```csharp { linenos=inline hl_lines=["12-17"] }
+namespace BlaisePascal.OOPExamples.Presentation;
+
+using BlaisePascal.OOPExamples.Domain;
+
+public class UseBulb
+{
+    public static void Main(string[] args) 
+    {
+        Bulb newBulb = new Bulb();
+        Console.WriteLine("New bulb created!");
+        
+        Console.WriteLine(
+            "Initial brightness: " + newBulb._brightness
+        ); // ERRORE!
+        Console.WriteLine(
+            "Initial state: " + newBulb._state
+        ); // ERRORE!
+
+        for (int i = 0; i < 3; i++) 
+        {
+            newBulb.Brighten();
+        }
+        // Here, 'brightness' should be equal to 3 - 
+        // we could use xunit to make a unit test 
+        // and assert that ;)
+
+        newBulb.On();
+        // [...]
+    }
+}
+```
+{{% /col %}}
+{{% /multicol %}}
+
+---
+
+### **Classe** vs. **Oggetto**
+
+{{% multicol %}}
+{{% col %}}
+![](imgs/clsvsobj.png)
+{{% /col %}}
+
+{{% col %}}
+<img src="imgs/blueprint.png" class="w-75">
+{{% /col %}}
+
+{{% /multicol %}}
+
+---
+
 ### **4 pillars** of Object Oriented Programming
 
 {{% multicol %}}
@@ -464,7 +624,7 @@ Paradigma orientato al problem solving, prendendo le distanze da dettagli irrile
 {{% /col %}}
 {{% col %}}
 #### 02. Incapsulamento
-Posso nascondere in una classe informazioni che non voglio rendere visibili all'esterno.
+Posso (*io, **progettista***) nascondere in una classe informazioni che non voglio rendere visibili all'esterno (*altri, **utilizzatori***).
 {{% /col %}}
 {{% col %}}
 #### 03. Ereditarietà
@@ -475,5 +635,692 @@ Proprietà e metodi possono essere ereditati di classe in classe, sovrascritti o
 Lo stesso metodo o la stessa proprietà può assumere comportamenti diversi a seconda dello scenario.
 {{% /col %}}
 {{% /multicol %}}
+
+{{% /section %}}
+
+---
+
+{{% section %}}
+
+#### Parte **#03**
+## **O**.**O**.**P**. - encapsulation
+
+---
+
+### CLEAN Code / pt. 1
+
+{{% multicol %}}
+{{% col %}}
+#### Layout
+- indentazione di 2-4 caratteri
+- linee non più lunghe di 90 caratteri (spezzare in maniera coerente)
+{{% /col %}}
+
+{{% col %}}
+#### Commenti
+- "`// ...`" commento su una linea
+- "`/* ... */`" commento su più linee - utilizzato per commentare sezioni interne del codice
+- "`/// <summary> ... </summary>`" commenti di documentazione, da posizionare sopra classi e membri **pubblici** del codice
+  - servono per generare documentazione!
+{{% /col %}}
+
+{{% /multicol %}}
+
+#### Istruzioni
+- una istruzione per riga
+- inizializzare sempre le variabili!
+- una definizione di variabile per riga - non fare `int x, y, z;` !
+
+---
+
+### CLEAN Code / pt. 2
+
+{{% multicol %}}
+{{% col %}}
+#### Ordine delle proprietà di una classe
+
+1. **campi statici** (pubblici, poi privati)
+2. **campi d'istanza** (pubblici, poi privati) - proprietà
+3. **costruttori** (pubblici, poi privati)
+4. **metodi** (raggruppati per ruolo)
+{{% /col %}}
+{{% col %}}
+#### Nomi
+- **Classi, Namespace, Metodi**: PascalCase
+  - "`Tree`", "`Graph`", "`Car`", "`Person`"...
+- **Interfacce**: PascalCase + "I" maiuscola iniziale
+  - "`IEquatable<>`", "`IComparer`", "`ICollection`"...
+- **Costanti**: tutte maiuscole, parole separate da "_" 
+
+{{% /col %}}
+{{% /multicol %}}
+
+---
+
+### Esempio: `Point3D` / 1
+
+```csharp
+namespace BlaisePascal.OOPExamples.Domain;
+
+/// <summary>
+/// Point3D is an example showcasing some functionality of OO in C#, focussing
+/// on formatting. All properties have default - private - access.
+/// </summary>
+public class Point3D
+{
+    static readonly Point3D ZERO = new Point3D(0, 0, 0);
+    
+    /*
+        A Point3D is made of three fields and has some manipulation functions.
+    */
+    double _x;
+    double _y;
+    double _z;
+
+    /// <summary>
+    /// Constructor of Point3D class.
+    /// </summary>
+    public Point3D(double x, double y, double z)
+    {
+        this._x = x;
+        this._y = y;
+        this._z = z;
+    }
+
+    // [...]
+```
+
+---
+
+### Esempio: `Point3D` / 2
+
+```csharp
+    /// <summary>
+    /// Calculates the squared module of the point, i.e. (x**2) + (y**2) + (z**2).
+    /// </summary>
+    public double GetSquareModule()
+    {
+        return this._x * this._x + this._y * this._y + this._z * this._z;
+    }
+
+    /// <summary>
+    /// Apply translation to point in three axes.
+    /// </summary>
+    public void Translate(double x, double y, double z)
+    {
+        this._x += x;
+        this._y += y;
+        this._z += z;
+    }
+
+    /// <summary>
+    /// Static method to calculate the point with maximum squared module.
+    /// </summary>
+    public static Point3D Max(Point3D[] points)
+    {
+        var max = ZERO;
+        foreach (var point in points)
+        {
+            if (point.GetSquareModule() > ZERO.GetSquareModule())
+            {
+                max = point;
+            }
+        }
+
+        return max;
+    }
+} 
+```
+
+---
+
+### Princìpio di decomposizione: **Divide et impera**
+
+> "*Dividi e conquista*", approccio **top-down**.
+
+<br>
+
+> la **soluzione** di un **problema complesso** avviene **dividendolo** in problemi più **semplici**, tra loro **indipendenti**.
+
+#### Esempi
+
+- "Devo sviluppare una *calcolatrice con GUI*"
+  - **GUI** + **gestione eventi** + **calcoli matematici**
+- "Devo sviluppare un *ecommerce di elettrodomestici*"
+  - **Carrello** + **Ordini** + **Pagamenti** + **DB Articoli** + ...
+
+---
+
+### **Decomposizione e modularità**
+
+- i sottoproblemi devono essere **isolati**, **indipendenti**!
+
+#### 3 livelli di decomposizione
+
+1. suddivisione in **namespace** (*simili* ai package di altri linguaggi, tipo Java o Kotlin)
+
+2. suddivisione in **classi** (all'interno di un namespace)
+
+3. suddivisione in **metodi** (all'interno di una classe)
+
+---
+
+### Semplice esempio di incapsulamento: classe `Counter`
+
+{{% multicol %}}
+{{% col %}}
+
+#### POV: Progettista
+
+```csharp
+public class Counter
+{
+    // Utilizzo property: sintetizza in una riga
+    // - dichiarazione di un field
+    // - dichiarazione di un get pubblico default
+    // - dichiarazione di un set privato 
+    public int Count { get; private set; }
+
+    public Counter()
+    {
+        this.Count = 0;
+    }
+
+    public void Increment()
+    {
+        this.Count += 1;
+    }
+}
+```
+{{% /col %}}
+{{% col %}}
+
+#### POV: Utilizzatore (Console)
+
+```csharp
+namespace BlaisePascal.OOPExamples.Presentation;
+
+using BlaisePascal.OOPExamples.Domain;
+
+public class Program
+{
+    public static void UseCounter(Counter counter)
+    {
+        int incrementTimes = 4;
+        Console.WriteLine(counter.Count); // Should be "0"
+        for (int i = 0; i < incrementTimes; i++)
+        {
+            counter.Increment(); // +1 x 4
+        }
+        Console.WriteLine(counter.Count); // Should be "4"
+    }
+    
+    public static void Main(string[] args)
+    {
+        var myCounter = new Counter();
+        UseCounter(myCounter);
+    }
+}
+```
+{{% /col %}}
+{{% /multicol %}}
+
+---
+
+#### POV: Utilizzatore (**xUnit**) / 1
+
+```csharp
+public class CounterTest
+{
+    private static void CountInArray(int[] array, int target, Counter counter)
+    {
+        foreach (var item in array) 
+        {
+            if (item == target)
+            {    
+                counter.Increment();
+            }
+        }
+    }
+    
+    [Fact]
+    public void Increment_ShouldIncrementCountValueWhenCalledOnArrayCount()
+    {
+        // Arrange
+        var counter = new Counter();
+        var sampleArray = new int[] { 10, 15, 10, 30, 75, 40 }; 
+        var target = 10; 
+        var want = 2;
+
+        // Act
+        CountInArray(sampleArray, target, counter);
+        var have = counter.Count;
+
+        // Assert
+        Assert.Equal(want, have);
+    }
+
+```
+
+---
+
+#### POV: Utilizzatore (**xUnit**) / 2
+
+```csharp
+    [Fact]
+    public void Increment_ShouldIncrementCountValueWhenCalledOnMatrixCount()
+    {
+        // Arrange
+        var counter = new Counter();
+        var sampleMatrix = new int[][] {
+            new int[] { 10, 80, 90 },
+            new int[] { 10, 10, 65 },
+            new int[] { 10, 20, 10 },
+        }; 
+        var target = 10;
+        var want = 5;
+
+        // Act
+        foreach (var array in sampleMatrix)
+        {
+            CountInArray(array, target, counter);
+        }
+        var have = counter.Count;
+
+        // Assert
+        Assert.Equal(want, have);
+    }
+}
+```
+
+---
+
+### Qualche osservazione
+
+- La struttura di `Counter` mi impedisce di modificare accidentalmente il valore di `Count`!
+  - posso solo **creare** un counter (che parte da 0) e farlo **avanzare** con uno step di 1.
+  - l'informazione di `Count` è incapsulata dentro alla classe, che è l'unica che ha possibilità di modifica (utilizzando il modificatore di accessibilità `private`)
+- Il codice risultante è più astratto (più di "alto livello"): è più intuitivo leggere "`Count += 1`" oppure "`counter.increment()`"?
+  - qualora dovessi cambiare lo step di incremento, dovrei farlo solo all'interno del metodo `increment` e non altrove.
+- La scelta di implementare tale classe Counter mi rende il codice riutilizzabile in diversi contesti (come nei test `...OnArrayCount()` e `...OnMatrixCount()`)
+
+---
+
+### Progettazione e implementazione: le fasi
+
+1. Progettazione della **parte pubblica** della classe
+2. Costruzione dello stato
+3. Completamento implementazione
+4. Miglioramento codice finale
+5. Test del risultato
+
+---
+
+### Proviamo
+
+{{% multicol %}}
+{{% col %}}
+### E#00 
+`Calculator`
+{{% /col %}}
+{{% col %}}
+### E#01 
+`Circle`, `Square`, `Triangle`
+{{% /col %}}
+{{% col %}}
+### E#02  
+`Student`, `Professor`, `Class`
+{{% /col %}}
+{{% /multicol %}}
+
+{{% /section %}}
+
+---
+
+{{% section %}}
+
+#### Parte **#04**
+## Costruttori
+
+// TODO
+
+{{% /section %}}
+
+---
+
+{{% section %}}
+
+#### Parte **#05**
+## Interfacce & classi astratte
++ `virtual`/`override`, upcasting, downcasting
+
+---
+
+### PROBLEMA
+{{% multicol %}}
+{{% col %}}
+#### PROBLEM SPACE
+Si progetti in C# un software per il calcolo delle retribuzioni mensili di un'azienda per ciascun impiegato. Ciascun impiegato ha un ID, un nome, un cognome e un dipartimento di afferenza (Human Resources, Accountability, Management...)
+{{% /col %}}
+
+{{% col %}}
+Sono previsti diversi tipi di impiegati:
+1. **A paga oraria** (retribuzione: ore lavorate $\times$ paga oraria, con maggiorazione del $ 150 \\% $ della paga per gli straordinari)
+2. **Con salario mensile** (retribuzione: fissa ogni mese, indipendentemente dall'orario di lavoro)
+3. **Con salario mensile e commissioni** (retribuzione: fissa ogni mese + vendita (lorda) $\times$ tasso di commissione)
+4. **Manager** (retribuzione: salario mensile + (bonus $\times$ percentuale di completamento obiettivi))
+5. **Executive** (retribuzione: base di un manager + equità di bonus, calcolata come quote di mercato $\times$ prezzo delle quote)
+{{% /col %}}
+
+{{% /multicol %}}
+
+---
+
+### Una prima - **terrificante** - soluzione / 1
+
+```csharp
+namespace BlaisePascal.OOPExamples.Domain.SalaryCalculator.NOInheritance;
+
+public enum EmployeeType { Hourly, Salaried, CommissionSalaried, Manager, Executive }
+
+public class EmployeeRecord
+{
+    public int Id { get; init; }
+    public string FullName { get; init; } = string.Empty;
+    public string Department { get; init; } = string.Empty;
+    public EmployeeType Type { get; init; }
+
+    // Campi specifici orari
+    public decimal HourlyRate { get; init; }
+    public double HoursWorked { get; set; }
+
+    // Campi specifici stipendiati / manager
+    public decimal MonthlySalary { get; init; }
+
+    // Campi specifici commerciali
+    public decimal GrossSales { get; set; }
+    public decimal CommissionRate { get; init; }
+
+    // Campi specifici manager
+    public decimal TargetBonus { get; init; }
+    public double ObjectiveCompletionRate { get; set; }
+
+    // Campi specifici executive
+    public int StockSharesGranted { get; init; }
+    public decimal ShareMarketPrice { get; init; }
+
+    // [...]
+```
+
+---
+
+### Una prima - **terrificante** - soluzione / 2
+
+```csharp
+    // [...]
+    public decimal CalculatePay()
+    {
+        switch (Type)
+        {
+            case EmployeeType.Hourly:
+                if (HoursWorked <= 160.0)
+                    return (decimal)HoursWorked * HourlyRate;
+                decimal baseHoursPay = 160.0m * HourlyRate;
+                decimal overtimePay = (decimal)(HoursWorked - 160.0) * (HourlyRate * 1.5m);
+                return baseHoursPay + overtimePay;
+
+            case EmployeeType.Salaried:
+                return MonthlySalary;
+
+            case EmployeeType.CommissionSalaried:
+                return MonthlySalary + (GrossSales * CommissionRate);
+
+            case EmployeeType.Manager:
+                return MonthlySalary + (TargetBonus * (decimal)ObjectiveCompletionRate);
+
+            case EmployeeType.Executive:
+                decimal managerPart = MonthlySalary + (TargetBonus * (decimal)ObjectiveCompletionRate);
+                decimal equityPart = StockSharesGranted * ShareMarketPrice;
+                return managerPart + equityPart;
+
+            default:
+                throw new InvalidOperationException("Tipo non supportato.");
+        }
+    }
+    // [...]
+```
+
+---
+
+### Una prima - **terrificante** - soluzione / 3
+
+```csharp
+    // [...]
+    public string GetDetails()
+    {
+        string header = $"[{Id}] {FullName} - Dip. {Department}";
+        switch (Type)
+        {
+            case EmployeeType.Hourly:
+                return $"{header} | Orario ({HoursWorked}h a {HourlyRate:C}/h)";
+            case EmployeeType.Salaried:
+                return $"{header} | Fisso: {MonthlySalary:C}";
+            case EmployeeType.CommissionSalaried:
+                return $"{header} | Fisso: {MonthlySalary:C} + Provvigione ({CommissionRate:P0} su {GrossSales:C})";
+            case EmployeeType.Manager:
+                return $"{header} | Fisso: {MonthlySalary:C} + Bonus ({TargetBonus:C} al {ObjectiveCompletionRate:P0})";
+            case EmployeeType.Executive:
+                return $"{header} | Fisso: {MonthlySalary:C} + Bonus ({TargetBonus:C} al {ObjectiveCompletionRate:P0}) + Equity: {StockSharesGranted} az. ({ShareMarketPrice:C})";
+            default:
+                return header;
+        }
+    }
+```
+
+---
+
+Due grossi problemi:
+- classe **monolitica**
+  - vìolato **OCP** - **O**pen-**C**losed **P**rinciple
+- logica **ripetuta**
+  - vìolato **DRY** - **D**on't **R**epeat **Y**ourself
+
+<br>
+<br>
+    
+> Non stiamo usando i princìpi fondamentali della OOP!
+
+---
+
+### Idea / 1
+
+{{% callout type="success" %}}
+Osserviamo che, per ciascun dipendente, si presentano delle caratteristiche comuni:
+- ID
+- FullName
+- Department
+{{% /callout %}}
+
+<br>
+
+{{% callout type="warning" %}}
+Ciascun dipendente, inoltre, ha una funzionalità `CalculateMonthlyPay()` - la cui implementazione cambia a seconda del tipo di dipendente.
+{{% /callout %}}
+
+---
+
+### Idea / 2
+
+Potremmo quindi pensare di creare una **classe padre** `Employee` che raccolga le caratteristiche a fattor comune, ma che lasci la libertà a ciascuna **specializzazione** di calcolare lo stipendio secondo le sue modalità.
+
+---
+
+
+### Una soluzione **migliore** / 1
+
+```csharp { linenos=inline hl_lines=["3", "16-17", "19-23"] }
+namespace BlaisePascal.OOPExamples.Domain.SalaryCalculator.WithInheritance;
+
+public abstract class Employee
+{
+    public int Id { get; private set }
+    public string FullName { get; private set }
+    public string Department { get; private set }
+
+    protected Employee(int id, string fullName, string department)
+    {
+        Id = id;
+        FullName = fullName;
+        Department = department;
+    }
+
+    // Contratto: ogni sottoclasse concreta deve implementare la formula
+    public abstract decimal CalculateMonthlyPay();
+
+    // Metodo estendibile: fornisce l'intestazione comune
+    public virtual string GetEmploymentDetails() 
+    {
+        return $"[{Id}] {FullName} - Dip. {Department}";
+    }
+}
+```
+
+---
+
+### Una soluzione **migliore** / 2
+
+```csharp { linenos=inline hl_lines=["10", "16", "27"] }
+namespace BlaisePascal.OOPExamples.Domain.SalaryCalculator.WithInheritance;
+
+public class HourlyEmployee : Employee
+{
+    private readonly decimal EXTRA = 1.5m;
+    public decimal HourlyRate { get; init; }
+    public double HoursWorked { get; set; }
+
+    public HourlyEmployee(int id, string fullName, string department, decimal hourlyRate, double hoursWorked)
+        : base(id, fullName, department)
+    {
+        HourlyRate = hourlyRate;
+        HoursWorked = hoursWorked;
+    }
+
+    public override decimal CalculateMonthlyPay()
+    {
+        const double standardHours = 160.0;
+        if (HoursWorked <= standardHours)
+            return (decimal)HoursWorked * HourlyRate;
+
+        decimal standardPay = 160.0m * HourlyRate;
+        decimal overtimePay = (decimal)(HoursWorked - standardHours) * (HourlyRate * EXTRA);
+        return standardPay + overtimePay;
+    }
+
+    public override string GetEmploymentDetails() =>
+        $"{base.GetEmploymentDetails()} | Orario ({HoursWorked}h a {HourlyRate:C}/h)";
+}
+```
+
+---
+
+### Una soluzione **migliore** / 3
+
+```csharp
+namespace BlaisePascal.OOPExamples.Domain.SalaryCalculator.WithInheritance;
+
+public class SalariedEmployee : Employee
+{
+    public decimal MonthlySalary { get; init; }
+
+    public SalariedEmployee(int id, string fullName, string department, decimal monthlySalary)
+        : base(id, fullName, department)
+    {
+        MonthlySalary = monthlySalary;
+    }
+
+    public override decimal CalculateMonthlyPay() => MonthlySalary;
+
+    public override string GetEmploymentDetails() =>
+        $"{base.GetEmploymentDetails()} | Fisso: {MonthlySalary:C}";
+}
+```
+
+<br>
+
+// ESERCIZIO: Continuare l'implementazione seguendo il tracciato.
+
+---
+
+### La soluzione usa una **classe astratta**
+
+Con la parola chiave `abstract` si può contrassegnare una classe in cui **non tutto è implementato**
+- le classi che ereditano i metodi `abstract` DEVONO fornire una loro implementazione, mediante l'uso di `override`.
+
+<br>
+<br>
+
+{{% callout %}}
+E cosa vuol dire `virtual`?
+- si può usare sia nelle classi astratte che in quelle base, indica un metodo fornito di implementazione che **può** essere sovrascritta dalle classe figlie (utilizzando sempre la parola chiave `override`).
+{{% /callout %}}
+
+---
+
+### Interfaccia / 1
+
+- Serve un meccanismo per separare esplicitamente, ossia in dichiarazioni
+diverse, l’**interfaccia della classe** e la sua **realizzazione**
+  - Questo consente di tenere separate fisicamente la parte di “contratto”
+(*tipicamente fissa*) con quella di “implementazione” (*modificabile
+frequentemente*)
+- Consente di separare bene “**abstraction**” e “**concretion**"
+
+---
+
+### Interfaccia / 2
+
+- Contiene solo e soltanto le **firme** dei metodi della mia entità.
+  - **Firma = tipo di ritorno + nome + parametri** (p.e. `int CalculateAge(Date birthday);`)
+- Con un'interfaccia si crea un nuovo tipo di dato (come per le classi, classi astratte, `int`, `bool`, `string`, ecc...)
+  - Posso chiamare solo e soltanto i metodi dichiarati nell'interfaccia
+  - Una variabile dichiarata di tipo interfaccia assume solo per valori le **istanze delle classi che implementano l'interfaccia**.
+
+---
+
+### Come realizzare `DomusController` con riutilizzo del codice?
+![](imgs/domuscontroller.png)
+
+
+{{% /section %}}
+
+---
+
+
+{{% section %}}
+
+#### Parte **#XX**
+## Advanced O.O.P.
+
+// TODO
+
+---
+
+- `Object.Equals()`
+- Override degli operatori 
+- Extension methods 
+- Delegati, lambda expressions
+- Interfacce base del .NET — `IEquatable<T>`, `IComparer`
+- Generics
+
+{{% /section %}}
+
+---
+
+{{% section %}}
+
+## C# System.**Linq**
+**L**anguage-**IN**tegrated **Q**uery
+
+// TODO
 
 {{% /section %}}
