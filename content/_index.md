@@ -254,7 +254,7 @@ Esempio del contenuto di un **file progetto** (`.csproj`)
 ![Clean Code book](imgs/cleancode.jpg)
 
 {{% /col %}}
-{{% col %}}
+{{% col class="col-9" %}}
 - Il codice si scrive in **inglese**!
 - *Specify the intent*
   - i nomi delle variabili, classi, oggetti, funzioni o qualunque altra cosa di vostra creazione devono essere SIGNIFICATIVI! No `pippo`, `pluto`, `f(x)`...
