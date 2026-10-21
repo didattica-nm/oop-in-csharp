@@ -1,1 +1,2 @@
 C# history: https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-version-history
+Functional Programming in C#: Thinking in Functions, Not Objects: https://www.syntacticsugardaddy.com/blog/functional-programming-in-csharp

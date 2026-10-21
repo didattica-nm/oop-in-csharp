@@ -4,7 +4,7 @@
 	<meta name="generator" content="Hugo 0.157.0">
     <meta charset="utf-8">
 <title>O.O.P. in C#</title>
-<meta name="description" content="A Hugo theme for creating Reveal.js presentations">
+<meta name="description" content=".NET, C# e la Object Oriented Programming">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -887,8 +887,81 @@ le <strong>operazioni fornite</strong>.</p>
 
 <section data-shortcode-section>
 <h4 id="parte-04">Parte <strong>#04</strong></h4>
-<h2 id="costruttori">Costruttori</h2>
-<p>// TODO</p>
+<h2 id="ereditarietà">Ereditarietà</h2>
+</section><section>
+<p>Di cosa stiamo parlando?</p>
+<br>
+<div class="callout cite">
+    <div class="callout-background py-4 px-5"><div class="callout-content"><p><strong>Inheritance</strong>, together with <em>encapsulation</em> and <em>polymorphism</em>, is one of the three primary characteristics of object-oriented programming. Inheritance enables you to create new classes that <strong>reuse</strong>, <strong>extend</strong>, and <strong>modify</strong> the <em>behavior</em> defined in other classes.</p>
+</div><div class="callout-footer d-flex justify-content-end my-3 fs-1"><small><a href="https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/object-oriented/inheritance" target="_blank"><i class="fa-solid fa-link pe-2"></i>Microsoft Learn</a></small></div></div>
+</div>
+</section><section>
+<h4 id="concettualmente-una-classe-figlia-è-una-specializzazione-di-una-classe-padre">Concettualmente, una classe <strong>figlia</strong> è una <em>specializzazione</em> di una classe <strong>padre</strong>.</h4>
+<div class="mermaid">classDiagram
+    class Persona {
+        +String nome
+        +String cognome
+        +Date dataDiNascita
+        +String codiceFiscale
+        +getDatiAnagrafici() String
+    }
+
+    class Studente {
+        +String matricola
+        +String corsoDiStudi
+        +sostieniEsame(String materia) void
+        +getMediaVoti() float
+    }
+
+    class Professore {
+        +String dipartimento
+        +String materiaInsegnata
+        +faiLezione() void
+        +assegnaVoto(Studente studente, int voto) void
+    }
+
+    class CollaboratoreScolastico {
+        +String settoreAssegnato
+        +String turnoDiLavoro
+        +apriAule() void
+        +richiediMateriale() void
+    }
+
+    Persona <|-- Studente
+    Persona <|-- Professore
+    Persona <|-- CollaboratoreScolastico
+</div>
+
+</section><section>
+<h3 id="la-classe-studente-eredita-da-persona-cosa-comporta">La classe <code>Studente</code> eredita da <code>Persona</code>: cosa comporta?</h3>
+<small>
+<p>Da &ldquo;Microsoft Learn&rdquo;: <a href="https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/object-oriented/inheritance">https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/object-oriented/inheritance</a></p>
+</small>
+<p><img src="imgs/inheritance02.png" alt=""></p>
+<div class="container-fluid m-0 p-0">
+    <div class='row '><div class='col '><div class="callout success">
+    <div class="callout-background py-4 px-5"><div class="callout-content"><h3 id="vengono-ereditati">Vengono ereditati</h3>
+<ul>
+<li>Proprietà della classe padre</li>
+<li>Metodi della classe padre</li>
+<li>Indicizzatori della classe padre</li>
+<li>&hellip;</li>
+</ul>
+</div></div>
+</div>
+</div>
+<div class='col '><div class="callout warning">
+    <div class="callout-background py-4 px-5"><div class="callout-content"><h3 id="non-vengono-ereditati"><strong>NON</strong> vengono ereditati</h3>
+<ul>
+<li>Costruttori della classe padre</li>
+<li>Distruttori della classe padre</li>
+</ul>
+</div></div>
+</div> 
+</div>
+</div>
+</div>
+</section><section>
 
 </section>
 </section><section>
@@ -1191,9 +1264,179 @@ frequentemente</em>)</li>
 
 
 <section data-shortcode-section>
-<h2 id="c-systemlinq">C# System.<strong>Linq</strong></h2>
+<h2 id="c-systemlinq-e">C# System.<strong>Linq</strong> e <br></h2>
+<h2 id="la-programmazione-funzionale">la <strong>programmazione funzionale</strong></h2>
 <p><strong>L</strong>anguage-<strong>IN</strong>tegrated <strong>Q</strong>uery</p>
-<p>// TODO</p>
+</section><section>
+<h2 id="programmazione-funzionale"><strong>Programmazione funzionale</strong></h2>
+<h3 id="una-definizione-operativa">Una definizione operativa</h3>
+<blockquote>
+<p><strong>Functional programming</strong> is a way of thinking about software construction by creating <strong>pure functions</strong>. It avoids concepts of <strong>shared state</strong> and <strong>mutable data</strong> observed in <strong>Object Oriented Programming</strong>.</p>
+</blockquote>
+<blockquote>
+<p>Functional languages emphasize <strong>expressions</strong> and <strong>declarations</strong> rather than the <em>execution of statements</em>. Therefore, unlike other procedures which depend on a local or global state, value output in FP depends only on the arguments passed to the function.</p>
+</blockquote>
+<br>
+<p>— da Guru99.com, <a href="https://www.guru99.com/functional-programming-tutorial.html">https://www.guru99.com/functional-programming-tutorial.html</a></p>
+</section><section>
+<h4 id="alcuni">(alcuni)</h4>
+<h3 id="concetti-chiave"><strong>Concetti chiave</strong></h3>
+<div class="container-fluid m-0 p-0">
+    <div class='row '><div class='col '><h3 id="funzioni-pure">Funzioni pure</h3>
+<ul>
+<li>dato uno <strong>stesso input</strong>, producono uno <strong>stesso output</strong>
+<ul>
+<li>$X \to Y$</li>
+</ul>
+</li>
+<li>no <strong>side effects</strong>!
+<ul>
+<li>l&rsquo;unica cosa che una accade in una funzione pura è data dal suo output</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#9aedfe">int</span> sum(x, y) 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> x + y;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
+<div class='col '><h3 id="immutabilità">Immutabilità</h3>
+<ul>
+<li>le variabili sono immutabili
+<ul>
+<li>non possono cambiare nel corso del tempo</li>
+<li>unico modo: crearne di nuove!</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#78787e">// Inizializza una variabile &#39;x&#39; a 0</span>
+</span></span><span style="display:flex;"><span><span style="color:#9aedfe">int</span> x = <span style="color:#ff9f43">0</span>; 
+</span></span><span style="display:flex;"><span><span style="color:#78787e">// Crea una **nuova** variabile &#39;x&#39; </span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e">// con il valore aggiornato</span>
+</span></span><span style="display:flex;"><span>x = x + <span style="color:#ff9f43">1</span>;
+</span></span></code></pre></div><p>(<em>supponendo di lavorare in un linguaggio basato sul paradigma funzionale</em>)</p>
+</div>
+<div class='col '><h3 id="ricorsione">Ricorsione</h3>
+<ul>
+<li>no cicli <code>for</code> o <code>while</code>!</li>
+<li>l&rsquo;iterazione è realizzata tramite <strong>ricorsione</strong> (funzioni che chiamano sé stesse)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#9aedfe">int</span> Fibonacci(<span style="color:#9aedfe">int</span> n) 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> n &gt;= <span style="color:#ff9f43">1</span> ? 
+</span></span><span style="display:flex;"><span>        Fibonacci(n-<span style="color:#ff9f43">1</span>) + Fibonacci(n-<span style="color:#ff9f43">2</span>) : 
+</span></span><span style="display:flex;"><span>        <span style="color:#ff9f43">1</span>; 
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
+</div>
+</div>
+</section><section>
+<h2 id="lambda-calculus"><strong>$\lambda$</strong>-calculus</h2>
+<p>Teoria matematica <strong>preponderante</strong> e <strong>molto rigorosa</strong>.</p>
+</section><section>
+<h2 id="alcuni-linguaggi-di-riferimento">Alcuni linguaggi di riferimento</h2>
+<div class="container-fluid m-0 p-0">
+    <div class='row '><div class='col '><p><img src="imgs/lisp.png" alt=""></p>
+<small>
+    Un file scritto in Lisp.
+</small>
+</div>
+<div class='col '><ul>
+<li>LISP</li>
+<li>Haskell</li>
+<li>Scala (recente, sviluppi promettenti)</li>
+<li>F# (di casa Microsoft!)</li>
+</ul>
+</div>
+</div>
+</div>
+</section><section>
+<h3 id="in-c-comè-supportata-la-programmazione-funzionale">In <strong>C#</strong>: com&rsquo;è supportata la programmazione funzionale?</h3>
+</section><section>
+<h4 id="01-records--da-c--90">01. Records <br> (da C# &gt; 9.0)</h4>
+<p>Concetto identico ad una classe, ma sono <strong>immutabili</strong>.</p>
+<div class="container-fluid m-0 p-0">
+    <div class='row '><div class='col '><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#ff6ac1">namespace</span> BlaisePascal.OOPExamples.Presentation.Records;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e">// Dichiarazione delle proprietà direttamente nel costruttore!</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">public</span> <span style="color:#ff6ac1">record</span> <span style="color:#f3f99d">IntegerPair</span>(<span style="color:#9aedfe">int</span> First, <span style="color:#9aedfe">int</span> Second);
+</span></span></code></pre></div></div>
+<div class='col '><p><img src="imgs/immutability.png" alt=""></p>
+<p><small>Non posso modificarne i valori! Le proprietà sono <code>readonly</code>.</small></p>
+</div>
+</div>
+</div>
+<h4 id="features">Features:</h4>
+<ul>
+<li>override di <code>Object.ToString()</code> già implementato di default;
+<ul>
+<li>in questo esempio: <code>IntegerPair { First = 10, Second = 20 }</code></li>
+</ul>
+</li>
+<li>override di <code>Object.Equals()</code> già implementato di default;
+<ul>
+<li>due istanze di record sono uguali se i valori di ciascuna <strong>proprietà</strong> sono uguali.</li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h4 id="02-lambda-expressions--da-c--30">02. Lambda expressions <br> (da C# &gt; 3.0)</h4>
+<p>Funzioni anonime assegnabili ad una variabile. Aumentano la <strong>riutilizzabilità</strong> del codice.</p>
+<blockquote>
+<p>Struttura:
+<code>(&lt;parametri&gt;) =&gt; &lt;corpo&gt;</code></p>
+</blockquote>
+<br>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>Func&lt;<span style="color:#9aedfe">int</span>, <span style="color:#9aedfe">int</span>&gt; doubleIt = (<span style="color:#9aedfe">int</span> n) =&gt; <span style="color:#ff9f43">2</span> * n;
+</span></span><span style="display:flex;"><span>Func&lt;<span style="color:#9aedfe">int</span>, <span style="color:#9aedfe">int</span>, <span style="color:#9aedfe">int</span>&gt; sum = (<span style="color:#9aedfe">int</span> x, <span style="color:#9aedfe">int</span> y) =&gt; x + y;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Func&lt;<span style="color:#9aedfe">int</span>, <span style="color:#9aedfe">int</span>, <span style="color:#9aedfe">bool</span>&gt; isDivisibleBy = (<span style="color:#9aedfe">int</span> n, <span style="color:#9aedfe">int</span> d) =&gt; n % d == <span style="color:#ff9f43">0</span>; 
+</span></span><span style="display:flex;"><span>Predicate&lt;<span style="color:#9aedfe">int</span>&gt; isEven = (<span style="color:#9aedfe">int</span> n) =&gt; isDivisibleBy(n, <span style="color:#ff9f43">2</span>);
+</span></span><span style="display:flex;"><span><span style="color:#78787e">// Equivalent: </span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e">// Func&lt;int, bool&gt; isEven = (int n) =&gt; isDivisibleBy(n, 2);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Action&lt;<span style="color:#9aedfe">int</span>&gt; printTests = (<span style="color:#9aedfe">int</span> i) =&gt;
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Console.WriteLine(<span style="color:#5af78e">$&#34;Il numero {i}, raddoppiato, vale: {doubleIt(i)}&#34;</span>);
+</span></span><span style="display:flex;"><span>    Console.WriteLine(<span style="color:#5af78e">$&#34;Il numero {i}, sommato a 100, vale: {sum(i, 100)}&#34;</span>);
+</span></span><span style="display:flex;"><span>    Console.WriteLine(<span style="color:#5af78e">$&#34;Il numero {i} è pari? {isEven(i)}&#34;</span>);
+</span></span><span style="display:flex;"><span>    Console.WriteLine(<span style="color:#5af78e">$&#34;Il numero {i} è divisibile per 3? {isEven(i)}&#34;</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e">// Usage</span>
+</span></span><span style="display:flex;"><span><span style="color:#9aedfe">var</span> numbers = Enumerable.Range(<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">10</span>);
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">foreach</span> (<span style="color:#9aedfe">int</span> i <span style="color:#ff6ac1">in</span> numbers)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    printTests(i);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></section><section>
+<h4 id="03-linq">03. LINQ</h4>
+<p><em>Linguaggio di query integrato</em> che permette di applicare <strong>trasformazioni</strong> a sequenze di dati, rendendo le operazioni di query molto <strong>concise</strong>.</p>
+<h5 id="esempio">Esempio:</h5>
+<p>Voglio stampare, in <strong>ordine decrescente</strong>, tutti i numeri da 1 a 100 che sono sia <strong>pari</strong> che <strong>&gt; 20</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span><span style="color:#9aedfe">var</span> numbers = Enumerable.Range(<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">100</span>); <span style="color:#78787e">// Elenco di numeri da 1 a 100</span>
+</span></span></code></pre></div><div class="container-fluid m-0 p-0">
+    <div class='row '><div class='col '><p>Opzione 1: Utilizzare la <strong>query expression</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>IEnumerable&lt;<span style="color:#9aedfe">int</span>&gt; resultWithExpression = 
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">from</span> number <span style="color:#ff6ac1">in</span> numbers
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">where</span> number &gt; <span style="color:#ff9f43">20</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">where</span> number % <span style="color:#ff9f43">2</span> == <span style="color:#ff9f43">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">orderby</span> number <span style="color:#ff6ac1">descending</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">select</span> number;
+</span></span></code></pre></div></div>
+<div class='col '><p>Opzione 2: Utilizzare la <strong>sintassi a metodi</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>IEnumerable&lt;<span style="color:#9aedfe">int</span>&gt; resultWithMethods = numbers
+</span></span><span style="display:flex;"><span>    .Where(n =&gt; n &gt; <span style="color:#ff9f43">20</span>)
+</span></span><span style="display:flex;"><span>    .Where(n =&gt; n % <span style="color:#ff9f43">2</span> == <span style="color:#ff9f43">0</span>)
+</span></span><span style="display:flex;"><span>    .OrderByDescending(n =&gt; n);
+</span></span></code></pre></div></div>
+</div>
+</div>
+<p>Confronto tra i due risultati: ottengono la stessa cosa?</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape><span style="display:flex;"><span>Console.WriteLine(
+</span></span><span style="display:flex;"><span>    Enumerable.SequenceEqual(resultWithMethods, resultWithExpression)
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><p>(Output atteso: <code>True</code>)</p>
 
 </section>
 </section>
@@ -1260,10 +1503,35 @@ frequentemente</em>)</li>
   
 
   
+    
+  
 
   
 
 
+
+  <script type="text/javascript" src="./extlib/js/mermaid.min.js"></script>
+  <script type="text/javascript">
+    mermaid.initialize({startOnLoad: false});
+    let render = (event) => {
+      let mermaidElems = event.currentSlide.querySelectorAll('.mermaid');
+      if (!mermaidElems.length){
+          return
+      }
+      mermaidElems.forEach(mermaidElem => {
+          let processed = mermaidElem.getAttribute('data-processed');
+          if (!processed){
+              
+              mermaid.init(undefined, mermaidElem);
+          }
+      });
+    };
+    
+    render({currentSlide: Reveal.getCurrentSlide()});
+
+    Reveal.on('slidechanged', render);
+    Reveal.on('ready', render);
+  </script>
 
     <script type="text/javascript" id="MathJax-script" async src="./extlib/js/mathjax.min.js"></script>
 <script>
