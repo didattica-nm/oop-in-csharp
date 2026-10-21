@@ -2,7 +2,7 @@
 +++
 
 title = "O.O.P. in C#"
-description = "A Hugo theme for creating Reveal.js presentations"
+description = ".NET, C# e la Object Oriented Programming"
 outputs = ["Reveal"]
 aliases = [
     "/guide/"
@@ -980,9 +980,96 @@ public class CounterTest
 {{% section %}}
 
 #### Parte **#04**
-## Costruttori
+## Ereditarietà
 
-// TODO
+---
+
+Di cosa stiamo parlando?
+
+<br>
+    
+{{% callout type="cite" src="Microsoft Learn" srcLink="https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/object-oriented/inheritance" %}}
+
+**Inheritance**, together with *encapsulation* and *polymorphism*, is one of the three primary characteristics of object-oriented programming. Inheritance enables you to create new classes that **reuse**, **extend**, and **modify** the *behavior* defined in other classes.
+
+{{% /callout %}}
+
+---
+
+#### Concettualmente, una classe **figlia** è una *specializzazione* di una classe **padre**.
+
+```mermaid
+classDiagram
+    class Persona {
+        +String nome
+        +String cognome
+        +Date dataDiNascita
+        +String codiceFiscale
+        +getDatiAnagrafici() String
+    }
+
+    class Studente {
+        +String matricola
+        +String corsoDiStudi
+        +sostieniEsame(String materia) void
+        +getMediaVoti() float
+    }
+
+    class Professore {
+        +String dipartimento
+        +String materiaInsegnata
+        +faiLezione() void
+        +assegnaVoto(Studente studente, int voto) void
+    }
+
+    class CollaboratoreScolastico {
+        +String settoreAssegnato
+        +String turnoDiLavoro
+        +apriAule() void
+        +richiediMateriale() void
+    }
+
+    Persona <|-- Studente
+    Persona <|-- Professore
+    Persona <|-- CollaboratoreScolastico
+```
+
+---
+
+### La classe `Studente` eredita da `Persona`: cosa comporta?
+
+<small>
+
+Da "Microsoft Learn": https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/object-oriented/inheritance
+
+</small>
+
+![](imgs/inheritance02.png)
+
+
+{{% multicol %}}
+{{% col %}}
+{{% callout type="success" %}}
+### Vengono ereditati
+- Proprietà della classe padre
+- Metodi della classe padre
+- Indicizzatori della classe padre
+- ...
+{{% /callout %}}
+{{% /col %}}
+{{% col %}}
+{{% callout type="warning" %}}
+### **NON** vengono ereditati
+- Costruttori della classe padre
+- Distruttori della classe padre
+{{% /callout %}} 
+{{% /col %}}
+{{% /multicol %}}
+
+
+
+
+---
 
 {{% /section %}}
 
@@ -1318,9 +1405,211 @@ frequentemente*)
 
 {{% section %}}
 
-## C# System.**Linq**
+## C# System.**Linq** e <br> 
+## la **programmazione funzionale**
 **L**anguage-**IN**tegrated **Q**uery
 
-// TODO
+---
+
+## **Programmazione funzionale**
+### Una definizione operativa
+
+> **Functional programming** is a way of thinking about software construction by creating **pure functions**. It avoids concepts of **shared state** and **mutable data** observed in **Object Oriented Programming**.
+
+> Functional languages emphasize **expressions** and **declarations** rather than the *execution of statements*. Therefore, unlike other procedures which depend on a local or global state, value output in FP depends only on the arguments passed to the function.
+
+<br>
+
+— da Guru99.com, https://www.guru99.com/functional-programming-tutorial.html
+
+---
+
+#### (alcuni)
+### **Concetti chiave**
+
+{{% multicol %}}
+{{% col %}}
+### Funzioni pure
+- dato uno **stesso input**, producono uno **stesso output**
+  - $X \to Y$
+- no **side effects**!
+  - l'unica cosa che una accade in una funzione pura è data dal suo output
+```csharp
+int sum(x, y) 
+{
+    return x + y;
+}
+```
+{{% /col %}}
+{{% col %}}
+### Immutabilità
+- le variabili sono immutabili
+  - non possono cambiare nel corso del tempo
+  - unico modo: crearne di nuove!
+
+```csharp
+// Inizializza una variabile 'x' a 0
+int x = 0; 
+// Crea una **nuova** variabile 'x' 
+// con il valore aggiornato
+x = x + 1;
+```
+(*supponendo di lavorare in un linguaggio basato sul paradigma funzionale*)
+
+{{% /col %}}
+{{% col %}}
+### Ricorsione
+- no cicli `for` o `while`!
+- l'iterazione è realizzata tramite **ricorsione** (funzioni che chiamano sé stesse)
+
+```csharp
+int Fibonacci(int n) 
+{
+    return n >= 1 ? 
+        Fibonacci(n-1) + Fibonacci(n-2) : 
+        1; 
+}
+```
+{{% /col %}}
+{{% /multicol %}}
+
+---
+
+## **$\lambda$**-calculus
+
+Teoria matematica **preponderante** e **molto rigorosa**.
+
+---
+
+## Alcuni linguaggi di riferimento
+
+{{% multicol %}}
+{{% col %}}
+![](imgs/lisp.png)
+
+<small>
+    Un file scritto in Lisp.
+</small>
+
+{{% /col %}}
+{{% col %}}
+- LISP
+- Haskell
+- Scala (recente, sviluppi promettenti)
+- F# (di casa Microsoft!)
+{{% /col %}}
+
+{{% /multicol %}}
+
+---
+
+### In **C#**: com'è supportata la programmazione funzionale?
+
+---
+
+#### 01. Records <br> (da C# > 9.0)
+Concetto identico ad una classe, ma sono **immutabili**.
+
+{{% multicol %}}
+{{% col %}}
+```csharp
+namespace BlaisePascal.OOPExamples.Presentation.Records;
+
+// Dichiarazione delle proprietà direttamente nel costruttore!
+public record IntegerPair(int First, int Second);
+```
+{{% /col %}}
+{{% col %}}
+![](imgs/immutability.png)
+
+<small>Non posso modificarne i valori! Le proprietà sono `readonly`.</small>
+{{% /col %}}
+{{% /multicol %}}
+
+#### Features:
+- override di `Object.ToString()` già implementato di default;
+  - in questo esempio: `IntegerPair { First = 10, Second = 20 }`
+- override di `Object.Equals()` già implementato di default;
+  - due istanze di record sono uguali se i valori di ciascuna **proprietà** sono uguali.
+
+---
+
+#### 02. Lambda expressions <br> (da C# > 3.0)
+Funzioni anonime assegnabili ad una variabile. Aumentano la **riutilizzabilità** del codice.
+
+> Struttura: 
+> `(<parametri>) => <corpo>`
+
+<br>
+
+```csharp
+Func<int, int> doubleIt = (int n) => 2 * n;
+Func<int, int, int> sum = (int x, int y) => x + y;
+
+Func<int, int, bool> isDivisibleBy = (int n, int d) => n % d == 0; 
+Predicate<int> isEven = (int n) => isDivisibleBy(n, 2);
+// Equivalent: 
+// Func<int, bool> isEven = (int n) => isDivisibleBy(n, 2);
+
+Action<int> printTests = (int i) =>
+{
+    Console.WriteLine($"Il numero {i}, raddoppiato, vale: {doubleIt(i)}");
+    Console.WriteLine($"Il numero {i}, sommato a 100, vale: {sum(i, 100)}");
+    Console.WriteLine($"Il numero {i} è pari? {isEven(i)}");
+    Console.WriteLine($"Il numero {i} è divisibile per 3? {isEven(i)}");
+};
+
+// Usage
+var numbers = Enumerable.Range(1, 10);
+foreach (int i in numbers)
+{
+    printTests(i);
+}
+```
+
+---
+
+#### 03. LINQ 
+*Linguaggio di query integrato* che permette di applicare **trasformazioni** a sequenze di dati, rendendo le operazioni di query molto **concise**. 
+
+##### Esempio:
+Voglio stampare, in **ordine decrescente**, tutti i numeri da 1 a 100 che sono sia **pari** che **> 20**.
+
+```csharp
+var numbers = Enumerable.Range(1, 100); // Elenco di numeri da 1 a 100
+```
+{{% multicol %}}
+{{% col %}}
+
+Opzione 1: Utilizzare la **query expression**
+```csharp
+IEnumerable<int> resultWithExpression = 
+    from number in numbers
+    where number > 20
+    where number % 2 == 0
+    orderby number descending
+    select number;
+```
+{{% /col %}}
+{{% col %}}
+
+Opzione 2: Utilizzare la **sintassi a metodi**
+```csharp
+IEnumerable<int> resultWithMethods = numbers
+    .Where(n => n > 20)
+    .Where(n => n % 2 == 0)
+    .OrderByDescending(n => n);
+```
+{{% /col %}}
+{{% /multicol %}}
+
+Confronto tra i due risultati: ottengono la stessa cosa?
+```csharp
+Console.WriteLine(
+    Enumerable.SequenceEqual(resultWithMethods, resultWithExpression)
+);
+```
+
+(Output atteso: `True`)
 
 {{% /section %}}
