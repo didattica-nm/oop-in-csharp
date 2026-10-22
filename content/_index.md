@@ -1556,7 +1556,7 @@ Action<int> printTests = (int i) =>
     Console.WriteLine($"Il numero {i}, raddoppiato, vale: {doubleIt(i)}");
     Console.WriteLine($"Il numero {i}, sommato a 100, vale: {sum(i, 100)}");
     Console.WriteLine($"Il numero {i} è pari? {isEven(i)}");
-    Console.WriteLine($"Il numero {i} è divisibile per 3? {isEven(i)}");
+    Console.WriteLine($"Il numero {i} è divisibile per 3? {isDivisibleBy(i, 3)}");
 };
 
 // Usage
